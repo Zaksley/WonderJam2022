@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
 
     public static PlayerState State { get; private set; }
     [SerializeField] private List<GameObject> _objectsUI = new List<GameObject>();
+
+    [SerializeField] private Texture2D _spriteCursor; 
     
     public static event EventHandler OnPlayerGotKey;
     
     void Start()
     {
         State = PlayerState.DEVELOPER; 
+        Cursor.SetCursor(_spriteCursor, Vector2.zero, CursorMode.Auto);
     }
     
     void Update()
@@ -26,12 +29,10 @@ public class GameManager : MonoBehaviour
         {
             SwitchMode();
 
-            bool IsPlayerInDevMode = State == PlayerState.DEVELOPER; 
+            bool IsPlayerInDevMode = State == PlayerState.DEVELOPER;
             EnableUI(IsPlayerInDevMode);
-
-            Cursor.visible = !Cursor.visible; 
+            Cursor.visible = IsPlayerInDevMode;
         }
-        
     }
 
     public static void UpdatePlayerStatus()
