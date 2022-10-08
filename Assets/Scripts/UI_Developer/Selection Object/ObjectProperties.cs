@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,12 @@ using UnityEngine.UI;
 public class ObjectProperties : MonoBehaviour
 {
 
+    public bool gravity;
+    public bool collision;
+
+
+
+    
     [SerializeField] private Toggle _colliderToggle;
     private Collider2D _collider;
     private LineRenderer _line;
