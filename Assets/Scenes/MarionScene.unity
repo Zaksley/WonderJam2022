@@ -568,6 +568,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -854,7 +858,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1827860615}
         m_TargetAssemblyTypeName: SelectableUIGameObject, Assembly-CSharp
-        m_MethodName: ClickButton
+        m_MethodName: SelectGameObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1593,13 +1597,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.13
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2135,7 +2143,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 426657152}
         m_TargetAssemblyTypeName: SelectableUIGameObject, Assembly-CSharp
-        m_MethodName: ClickButton
+        m_MethodName: SelectGameObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2190,17 +2198,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.75
+      value: 3.18
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.75
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2312,7 +2324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6662352765116252308, guid: a6236ff9a0addfc4f9e7f77bcf3d61bd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6236ff9a0addfc4f9e7f77bcf3d61bd, type: 3}
@@ -2407,7 +2419,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 916762589}
         m_TargetAssemblyTypeName: SelectableUIGameObject, Assembly-CSharp
-        m_MethodName: ClickButton
+        m_MethodName: SelectGameObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
