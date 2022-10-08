@@ -315,7 +315,9 @@ GameObject:
   - component: {fileID: 2855799472527770268}
   - component: {fileID: 2855799472527770269}
   - component: {fileID: 2855799472527770267}
-  - component: {fileID: 2855799472527770266}
+  - component: {fileID: 5519553313401940432}
+  - component: {fileID: 5519553313401940433}
+  - component: {fileID: 5519553313401940435}
   m_Layer: 3
   m_Name: PlateformMovable
   m_TagString: Untagged
@@ -331,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855799472527770270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.72, y: 0, z: 0}
+  m_LocalPosition: {x: 6.94, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -418,7 +420,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
---- !u!114 &2855799472527770266
+--- !u!114 &5519553313401940432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -427,9 +429,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2855799472527770270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd59f080bdef654d9655a0783263821, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbe8a8219ff66e46b06e7ea7f08019b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5519553313401940433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855799472527770270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffc85a17399c214bad6d6d80801c5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToSelect: {fileID: 2855799472527770270}
+  ButtonToSelect: {fileID: 0}
   _childrenUI:
   - {fileID: 2855799472125365867}
   - {fileID: 2855799471182470347}
+--- !u!114 &5519553313401940435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855799472527770270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 50
+  eraseRenderer: 0
