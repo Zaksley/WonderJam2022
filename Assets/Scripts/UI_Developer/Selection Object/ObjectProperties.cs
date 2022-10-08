@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider2D))]
 public class ObjectProperties : MonoBehaviour
 {
+
     [SerializeField] private Toggle _colliderToggle;
     private Collider2D _collider;
     private bool _isActive = true;
