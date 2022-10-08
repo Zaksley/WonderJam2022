@@ -178,5 +178,4 @@ public class SelectableUIGameObject : MonoBehaviour
     {
         _mouseIsExit = false;
     }
-
 }
