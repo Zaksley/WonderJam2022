@@ -1282,7 +1282,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1579930451245769512}
         m_TargetAssemblyTypeName: SelectableUIGameObject, Assembly-CSharp
-        m_MethodName: SelectGameObject
+        m_MethodName: UpdateSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

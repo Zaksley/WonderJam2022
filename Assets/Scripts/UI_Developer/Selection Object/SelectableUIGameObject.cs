@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private bool _clickOnChildren = false;
     private bool _mouseIsExit = false;
-    private bool _isSelected = false; 
+    private bool _isSelected = false;
 
     [SerializeField] private List<GameObject> _childrenUI = new List<GameObject>();
 
@@ -20,30 +21,64 @@ public class SelectableUIGameObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _mouseIsExit)
+        // Manage the developer/plateformer mode of the game
+        if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
+        {
+            UnselectAll();
+            return; 
+        }
+        
+        if (Input.GetMouseButtonDown(0) && _mouseIsExit && _isSelected)
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-            foreach(GameObject obj in _childrenUI)
+          
+            if (rayHit.transform == null)
             {
-                if (rayHit.transform.gameObject == obj)
-                {
-                    _clickOnChildren = true;
-                }
+                Debug.Log("ray update");
+                UnselectAll();
+                return; 
             }
-            if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
+
+            _clickOnChildren = ClickOnChildren(rayHit);
+            if (!_clickOnChildren)
             {
-                UnselectAll(); 
+                UnselectAll();
+                return; 
             }
-            else
+            
+            // if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
+            // {
+            //     Debug.Log("QUEL EST CE CAS WSH");
+            //     UnselectAll();
+            //     return; 
+            // }
+
+                // if (rayHit.transform != null)
+            // {
+            //     if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
+            //     {
+            //         UnselectAll(); 
+            //     }
+            //     else
+            //     {
+            //         _clickOnChildren = false;
+            //     }
+            // }
+        }
+    }
+
+    // Check if we clicked on a children
+    private bool ClickOnChildren(RaycastHit2D rayHit)
+    {
+        foreach(GameObject obj in _childrenUI)
+        {
+            if (rayHit.transform.gameObject == obj)
             {
-                _clickOnChildren = false;
+                return true;
             }
         }
 
-        if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
-        {
-            UnselectAll(); 
-        }
+        return false; 
     }
 
     private void EnableUIObject(bool stateObject)
@@ -56,6 +91,7 @@ public class SelectableUIGameObject : MonoBehaviour
     
     public void SelectGameObject()
     {
+        Debug.Log("button update");
         if (GlobalVariable.ButtonSelected != null)
         {
             UnSelectButton();
@@ -69,19 +105,37 @@ public class SelectableUIGameObject : MonoBehaviour
         UpdateUIObject(true);
     }
 
+    public void UpdateSelection()
+    {
+        if (_isSelected)
+        {
+            UnselectAll();
+        }
+        else
+        {
+            Debug.Log("Selection par ici");
+            SelectGameObject();
+            SelectButton();
+            UpdateUIObject(true);
+        }
+    }
+
     public void UnSelectButton()
     {
-        var colors = GlobalVariable.ButtonSelected.colors;
-        colors.normalColor = Color.white;
-        GlobalVariable.ButtonSelected.colors = colors;
-        GlobalVariable.ButtonSelected = null;
+        if (GlobalVariable.ButtonSelected != null)
+        {
+            var colors = GlobalVariable.ButtonSelected.colors;
+            colors.normalColor = Color.white;
+            GlobalVariable.ButtonSelected.colors = colors;
+            GlobalVariable.ButtonSelected = null;
+        }
     }
 
     private void UnselectAll()
     {
         UpdateUIObject(false);
-        UnSelectGameObject();
         UnSelectButton();
+        UnSelectGameObject();
     }
 
     private void UpdateUIObject(bool state)
@@ -94,12 +148,10 @@ public class SelectableUIGameObject : MonoBehaviour
     {
         GlobalVariable.ObjectSelected.GetComponent<cakeslice.Outline>().enabled = false;
         GlobalVariable.ObjectSelected = null;
-        EnableUIObject(false);
     }
 
     public void SelectButton()
     {
-
         if (GlobalVariable.ButtonSelected != null)
         {
             UnSelectButton();
@@ -112,14 +164,14 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        SelectGameObject();
-        SelectButton();
+        Debug.Log("click button");
+        UpdateSelection(); 
+        // SelectGameObject();
+        // SelectButton();
     }
     private void OnMouseExit()
     {
-        Debug.Log("exit");
         _mouseIsExit = true;
-
     }
 
     private void OnMouseEnter()
