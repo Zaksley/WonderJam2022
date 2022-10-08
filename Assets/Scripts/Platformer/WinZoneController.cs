@@ -42,6 +42,11 @@ public class WinZoneController : MonoBehaviour
         }
     }
     
+    private void OnDestroy()
+    {
+        GameManager.OnPlayerGotKey -= UpdateSprite; 
+    }
+    
     private IEnumerator JumpNextScene()
     {
         yield return new WaitForSeconds(_timeJumpNextScene);
