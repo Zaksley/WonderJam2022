@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _startTransform;
     [SerializeField] private float _respawnTime = 1.0f;
 
-    public bool HasKey { get; private set; } = false; 
+    public bool HasKey { get; private set; } = false;
 
     // Components
     private Rigidbody2D _body;
@@ -68,7 +68,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerGotKey()
     {
-        HasKey = true; 
+        HasKey = true;
+        GameManager.UpdatePlayerStatus(); 
     }
 
     private void OnCollisionStay2D(Collision2D collision)

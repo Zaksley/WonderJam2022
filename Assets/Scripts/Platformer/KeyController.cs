@@ -11,7 +11,7 @@ public class KeyController : MonoBehaviour
         if (player != null)
         {
             player.PlayerGotKey();
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 }
