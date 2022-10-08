@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _colliderToggle
+      value: 
+      objectReference: {fileID: 602059624}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -178,26 +182,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlateformMovable
       objectReference: {fileID: 0}
+    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 919853b280fe9124c8e1df50ecfff343, type: 2}
+    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.4963412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.05983287
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88cd23a618102ad47ab908b357208991, type: 3}
---- !u!1 &170670604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2855799472527770270, guid: 88cd23a618102ad47ab908b357208991, type: 3}
-  m_PrefabInstance: {fileID: 170670603}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &170670615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170670604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0468ff75111a45669e3f52f8612605ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderToggle: {fileID: 602059624}
 --- !u!1 &416500811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9754482e552ebb46a6b2205979e6fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _spriteEndLevel: {fileID: 0}
 --- !u!1 &2010485122
 GameObject:

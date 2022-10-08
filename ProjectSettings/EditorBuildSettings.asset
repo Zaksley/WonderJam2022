@@ -5,7 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 6d47359461d12144594fe73e3f35a81c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: 5bdc0d908eebc97428cec657979e0309
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3.unity
+    guid: e01a1b0fcb8f6cc48b9d831fb0aeefe6
+  - enabled: 0
+    path: Assets/Scenes/EnzoScene.unity
+    guid: 6a1584e7bdc7b3c48bbcca24c8f0d52d
+  - enabled: 0
+    path: Assets/Scenes/MarionScene.unity
+    guid: 11bc411fc5451834ca429a1687413a8b
+  - enabled: 0
+    path: Assets/Scenes/PJScene.unity
+    guid: e535863bacd8b3d43aa47cd0fb2b4587
   m_configObjects: {}

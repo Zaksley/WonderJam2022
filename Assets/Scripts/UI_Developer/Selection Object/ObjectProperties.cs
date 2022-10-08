@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(LineRenderer))]
 public class ObjectProperties : MonoBehaviour
 {
 
     [SerializeField] private Toggle _colliderToggle;
     private Collider2D _collider;
+    private LineRenderer _line;
     private bool _isActive = true;
 
     private int _withoutPlayerLayer;
@@ -29,6 +31,7 @@ public class ObjectProperties : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
+        _line = GetComponent<LineRenderer>();
         _platformLayer = LayerMask.NameToLayer("Platform");
         _withoutPlayerLayer = LayerMask.NameToLayer("WithoutPlayer");
 
@@ -39,6 +42,7 @@ public class ObjectProperties : MonoBehaviour
     private void Update()
     {
         IsActive = (gameObject == GlobalVariable.ObjectSelected);
+        _line.enabled = IsActive;
     }
 
     private void SyncUI()

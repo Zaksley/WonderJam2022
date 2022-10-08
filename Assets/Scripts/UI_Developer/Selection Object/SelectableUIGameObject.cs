@@ -250,7 +250,6 @@ public class SelectableUIGameObject : MonoBehaviour
                     {
                         UnSelectGameObject();
                         UnSelectButton();
-                        UnselectChildren();
                     }
                 }
             }
