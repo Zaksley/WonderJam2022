@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 2121839336882562269}
   - component: {fileID: 2071488743818784235}
   - component: {fileID: 304444191804286263}
+  - component: {fileID: 4447214797966331553}
   m_Layer: 0
   m_Name: WinZone
   m_TagString: Untagged
@@ -146,7 +147,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00630188, y: -0.28503752}
+  m_Offset: {x: 0.04924965, y: -0.0009237528}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +158,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5545597, y: 1.4256153}
+  m_Size: {x: 0.64935875, y: 0.9366753}
   m_EdgeRadius: 0
 --- !u!114 &2071488743818784235
 MonoBehaviour:
@@ -224,3 +225,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4447214797966331553
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525377086739545548}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b3faaad8e35ff54d8249d5d87998ed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
