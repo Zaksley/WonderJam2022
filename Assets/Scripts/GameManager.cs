@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public static PlayerState State { get; private set; }
     [SerializeField] private List<GameObject> _objectsUI = new List<GameObject>();
+    
+    public static event EventHandler OnPlayerGotKey;
     
     void Start()
     {
@@ -31,6 +34,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public static void UpdatePlayerStatus()
+    {
+        OnPlayerGotKey?.Invoke(null, null);    
+    }
+    
     private void EnableUI(bool State)
     {
         for (int indexUI = 0; indexUI < _objectsUI.Count; indexUI++)
