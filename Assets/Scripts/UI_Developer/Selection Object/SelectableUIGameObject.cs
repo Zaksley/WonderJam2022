@@ -10,6 +10,7 @@ public class SelectableUIGameObject : MonoBehaviour
     public GameObject ObjectToSelect;
     public Button ButtonToSelect;
 
+    private bool _clickOnChildren = false;
     private bool _mouseIsExit = false;
     private bool _isSelected = false; 
 
@@ -20,14 +21,24 @@ public class SelectableUIGameObject : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && _mouseIsExit)
         {
-            Debug.Log("onmousedown");
+           
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-            Debug.Log(rayHit.transform.gameObject.name);
-            if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
+            foreach(GameObject obj in _childrenUI)
+            {
+                if (rayHit.transform.gameObject == obj)
+                {
+                    _clickOnChildren = true;
+                }
+            }
+            if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
             {
                 UnSelectGameObject();
                 UnSelectButton();
                 UpdateUIObject(false);
+            }
+            else
+            {
+                _clickOnChildren = false;
             }
         }
 
