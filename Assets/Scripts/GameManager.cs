@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
         PLATEFORMER
     };
 
-    public PlayerState State { get; private set; }
+    public static PlayerState State { get; private set; }
     [SerializeField] private List<GameObject> _objectsUI = new List<GameObject>();
     
     void Start()

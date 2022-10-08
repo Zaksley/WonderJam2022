@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        // Check mode
+        _body.simulated = GameManager.State == GameManager.PlayerState.PLATEFORMER;
+
         // Input
         _horizontalDirection = Input.GetAxisRaw("Horizontal");
         
