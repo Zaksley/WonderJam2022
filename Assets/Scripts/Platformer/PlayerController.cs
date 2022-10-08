@@ -2,7 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     // Properties
@@ -22,11 +27,17 @@ public class PlayerController : MonoBehaviour
     // Components
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
+    private Animator _animator;
     
     // Fields
     private float _horizontalDirection = 0.0f;
     private bool _shouldJump = false;
     private bool _isGrounded = false;
+    
+    // Cache
+    private static readonly int HorizontalVelocityHash = Animator.StringToHash("horizontalVelocity");
+    private static readonly int VerticalVelocityHash = Animator.StringToHash("verticalVelocity");
+    private static readonly int JumpingHash = Animator.StringToHash("jumping");
 
     // Unity events
     
@@ -34,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         gameObject.transform.position = _startTransform.position;
     }
     
@@ -43,10 +55,9 @@ public class PlayerController : MonoBehaviour
         _body.simulated = GameManager.State == GameManager.PlayerState.PLATEFORMER;
 
         // Input
-        _horizontalDirection = Input.GetAxisRaw("Horizontal");
-        
-        if (!_shouldJump && _isGrounded)
-            _shouldJump = Input.GetButtonDown("Jump");
+        ProcessInputs();
+        // Animations
+        Animate();
     }
 
     private void FixedUpdate()
@@ -115,5 +126,23 @@ public class PlayerController : MonoBehaviour
     {
         var result = Physics2D.Raycast(_raycastOrigin.position, new Vector2 (0.0f, -1.0f), _raycastLength, ~LayerMask.NameToLayer("Platform"));
         return result.collider != null;
+    }
+    
+    // Update variables from inputs
+    private void ProcessInputs()
+    {
+        _horizontalDirection = Input.GetAxisRaw("Horizontal");
+        
+        if (!_shouldJump && _isGrounded)
+            _shouldJump = Input.GetButtonDown("Jump");
+    }
+    
+    // Animate the player
+    private void Animate()
+    {
+        _animator.SetFloat(HorizontalVelocityHash, Mathf.Abs(_body.velocity.x));
+        _animator.SetFloat(VerticalVelocityHash, _body.velocity.y);
+        _animator.SetBool(JumpingHash, !_isGrounded);
+        _sprite.flipX = _body.velocity.x < 0.0f;
     }
 }
