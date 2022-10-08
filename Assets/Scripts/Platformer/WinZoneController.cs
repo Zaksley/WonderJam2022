@@ -6,20 +6,22 @@ public class WinZoneController : MonoBehaviour
 {
     // Components 
     private SpriteRenderer _spriteRenderer;
-    [SerializeField] private PlayerController _player;
-
+    private Animator _animator; 
+    
     // Sprite
     [SerializeField] private Sprite _spriteEndLevel; 
     
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>(); 
 
         GameManager.OnPlayerGotKey += UpdateSprite; 
     }
 
     private void UpdateSprite(object sender, EventArgs args)
     {
+        _animator.SetTrigger("GotKey");
         _spriteRenderer.sprite = _spriteEndLevel; 
     }
 
