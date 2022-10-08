@@ -269,7 +269,6 @@ public class SelectableUIGameObject : MonoBehaviour
         for (int indexUI = 0; indexUI < GlobalVariable.listChildrenGameObject.Count; indexUI++)
         {
             GlobalVariable.listChildrenGameObject[indexUI].SetActive(false);
-            
         }
 
     }
@@ -277,6 +276,7 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private void EnableUIObject(bool stateObject)
     {
+        GlobalVariable.listChildrenGameObject = new List<GameObject>(); 
         for (int indexUI = 0; indexUI < _childrenUI.Count; indexUI++)
         {
             _childrenUI[indexUI].SetActive(stateObject);

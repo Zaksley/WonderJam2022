@@ -20,4 +20,9 @@ public class GateRendererController : MonoBehaviour
     {
         _spriteRenderer.sprite = _spriteEndLevel; 
     }
+
+    private void OnDestroy()
+    {
+        GameManager.OnPlayerGotKey -= UpdateSprite; 
+    }
 }
