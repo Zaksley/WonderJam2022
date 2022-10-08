@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118444567
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -2084871345, guid: d2c2a03dd288c1e4580db753b70a7d04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -198,7 +198,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118444567
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 125671740, guid: 20db85579eae6a346bff6560dd642844, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 5519553313401940435}
   - component: {fileID: -2265418218243778502}
   - component: {fileID: 3537877584631929051}
+  - component: {fileID: 333493688261949924}
   m_Layer: 3
   m_Name: PlateformMovable
   m_TagString: Untagged
@@ -526,3 +527,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!114 &333493688261949924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855799472527770270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0468ff75111a45669e3f52f8612605ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderToggle: {fileID: 0}
