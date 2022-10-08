@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3714d922f40e854791ca5167c4fb178
+guid: c8719dec7f9934947be39e39472a0cfb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -7,7 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_0
+      name: Chara_idle_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e83ab8c5bf9a1d44b1f1e7fb3f5d737
-      internalID: 248823457
+      spriteID: 7e7efcd4ae5098c428ed9ec8f3b6627a
+      internalID: -466161748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_1
+      name: Chara_idle_spritesheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c5f3885883212043b62981c1e1cb1d3
-      internalID: -1612105361
+      spriteID: 2f037967acdadd84087439d68598dde1
+      internalID: -538736040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_2
+      name: Chara_idle_spritesheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be539e48f3e0f9d4493cce7c89913b03
-      internalID: -322198228
+      spriteID: 965b3477fc24e9e4297b052807643037
+      internalID: -1107429968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_3
+      name: Chara_idle_spritesheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5e3f3c709a81c0478d919109bff3bdb
-      internalID: -1585986611
+      spriteID: df22fc1b960ee35428a6aa6cf5cc7555
+      internalID: -1997979371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_4
+      name: Chara_idle_spritesheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad673b927382b544aa399d5bac16061
-      internalID: -1926315310
+      spriteID: da7eed7e5a289f543853f8e3ae142b7a
+      internalID: 785064473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_5
+      name: Chara_idle_spritesheet_5
       rect:
         serializedVersion: 2
         x: 160
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 624d7d8acac133843bc2acd5f204852b
-      internalID: -1038514822
+      spriteID: 181a63c9e84abe3449a3a1f6b319fb76
+      internalID: 512503468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_6
+      name: Chara_idle_spritesheet_6
       rect:
         serializedVersion: 2
         x: 192
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9b94ba5af5f699488dd3ea4aef39cf3
-      internalID: -197813037
+      spriteID: 0fde2a1a0ef5d404c8c48de4e068a602
+      internalID: -1668866718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chara_walk_spritesheet_7
+      name: Chara_idle_spritesheet_7
       rect:
         serializedVersion: 2
         x: 224
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dd3f16428949814ea7e1a42e9cba02f
-      internalID: 1356210927
+      spriteID: 3fa13319569e76f49895071eff2ea8dc
+      internalID: 727123928
       vertices: []
       indices: 
       edges: []
@@ -282,14 +282,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Chara_walk_spritesheet_6: -197813037
-      Chara_walk_spritesheet_0: 248823457
-      Chara_walk_spritesheet_1: -1612105361
-      Chara_walk_spritesheet_2: -322198228
-      Chara_walk_spritesheet_4: -1926315310
-      Chara_walk_spritesheet_5: -1038514822
-      Chara_walk_spritesheet_7: 1356210927
-      Chara_walk_spritesheet_3: -1585986611
+      Chara_idle_spritesheet_3: -1997979371
+      Chara_idle_spritesheet_1: -538736040
+      Chara_idle_spritesheet_0: -466161748
+      Chara_idle_spritesheet_4: 785064473
+      Chara_idle_spritesheet_7: 727123928
+      Chara_idle_spritesheet_2: -1107429968
+      Chara_idle_spritesheet_5: 512503468
+      Chara_idle_spritesheet_6: -1668866718
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
