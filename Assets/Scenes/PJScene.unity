@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
-      propertyPath: _bounds.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
-      propertyPath: _bounds.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -185,10 +177,6 @@ PrefabInstance:
     - target: {fileID: 2855799472527770270, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_Name
       value: PlateformMovable
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
-      propertyPath: m_Positions.Array.size
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88cd23a618102ad47ab908b357208991, type: 3}

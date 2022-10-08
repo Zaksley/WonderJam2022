@@ -394,7 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSelect: {fileID: 2855799472527770270}
   ButtonToSelect: {fileID: 0}
-  _isSelected: 0
   _childrenUI:
   - {fileID: 2855799472125365867}
   - {fileID: 2855799471182470347}
@@ -424,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee02d364584142a19490c7c727952884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bounds: {x: 0, y: 0}
+  _bounds: {x: 4, y: 1}
   _gizmoColor: {r: 1, g: 0, b: 0, a: 0.25}
 --- !u!120 &3537877584631929051
 LineRenderer:
@@ -468,7 +467,6 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
