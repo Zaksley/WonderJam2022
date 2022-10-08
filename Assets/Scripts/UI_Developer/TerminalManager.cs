@@ -17,7 +17,6 @@ public class TerminalManager : MonoBehaviour
 
     // References to our prefab
     public GameObject textPrefab;
-    public ScrollRect sr;
     public GameObject linesContainer;
 
     int a = 0;
@@ -26,7 +25,8 @@ public class TerminalManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            this.Log("HELLO");
+            this.Log($"{Red("ENZO")}HELLO\nA\nAA");
+            this.Log("TEST WITH A VERY LONG \n STRING TEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRING");
         }
     }
 
@@ -43,10 +43,6 @@ public class TerminalManager : MonoBehaviour
 
     public void Log(string text)
     {
-        // Scale scroll rect depending on the content
-        Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
-        linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + 35.0f);
-
         // Create a new line
         GameObject newLine = Instantiate(textPrefab, linesContainer.transform);
 
@@ -55,6 +51,14 @@ public class TerminalManager : MonoBehaviour
 
         // Set the text
         newLine.GetComponentInChildren<TextMeshProUGUI>().text = FormatConsoleText(text);
+
+        // Scale scroll rect and text container     depending on the content
+        float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
+        // 5 is spacing in vertical layer group
+        Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
+        linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + 5 + textSize);
+        Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
+        newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
 
     }
 
