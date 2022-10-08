@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerGotKey()
     {
         HasKey = true;
-        GameManager.UpdatePlayerStatus(); 
+        GameManager.UpdatePlayerKeyStatus(); 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
         _isAlive = false; 
         _sprite.enabled = false;
         yield return new WaitForSeconds(_respawnTime);
+        HasKey = false;
+        GameManager.UpdatePlayerAliveStatus(); 
         gameObject.transform.position = _startTransform.position;
         _isAlive = true; 
         _sprite.enabled = true;

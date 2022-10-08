@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture2D _spriteCursor; 
     
     public static event EventHandler OnPlayerGotKey;
+    public static event EventHandler OnPlayerDie;
     
     void Start()
     {
@@ -35,9 +36,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void UpdatePlayerStatus()
+    public static void UpdatePlayerKeyStatus()
     {
         OnPlayerGotKey?.Invoke(null, null);    
+    }
+
+    public static void UpdatePlayerAliveStatus()
+    {
+        OnPlayerDie?.Invoke(null, null);    
     }
     
     private void EnableUI(bool State)

@@ -12,6 +12,7 @@ public class WinZoneController : MonoBehaviour
     private Animator _animator; 
     
     // Sprite
+    [SerializeField] private Sprite _spriteStartLevel;
     [SerializeField] private Sprite _spriteEndLevel;
     private float _timeJumpNextScene = 0.5f; 
     
@@ -21,12 +22,19 @@ public class WinZoneController : MonoBehaviour
         _animator = GetComponent<Animator>(); 
 
         GameManager.OnPlayerGotKey += UpdateSprite; 
+        GameManager.OnPlayerDie += RestartSprite; 
     }
 
     private void UpdateSprite(object sender, EventArgs args)
     {
         _animator.SetTrigger("GotKey");
         _spriteRenderer.sprite = _spriteEndLevel; 
+    }
+    
+    private void RestartSprite(object sender, EventArgs args)
+    {
+        _animator.Play("WinCorrupted");
+        _spriteRenderer.sprite = _spriteStartLevel; 
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -45,6 +53,7 @@ public class WinZoneController : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.OnPlayerGotKey -= UpdateSprite; 
+        GameManager.OnPlayerDie -= RestartSprite; 
     }
     
     private IEnumerator JumpNextScene()
