@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private float _horizontalDirection = 0.0f;
     private bool _shouldJump = false;
     private bool _isGrounded = false;
+    private bool _isAlive = true; 
     
     // Cache
     private static readonly int HorizontalVelocityHash = Animator.StringToHash("horizontalVelocity");
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Check mode
-        _body.simulated = GameManager.State == GameManager.PlayerState.PLATEFORMER;
+        _body.simulated = ((GameManager.State == GameManager.PlayerState.PLATEFORMER) && _isAlive);
 
         // Input
         ProcessInputs();
@@ -99,9 +100,11 @@ public class PlayerController : MonoBehaviour
     // Wait for respawn time and set object active at start position
     private IEnumerator WaitAndRespawn()
     {
+        _isAlive = false; 
         _sprite.enabled = false;
         yield return new WaitForSeconds(_respawnTime);
         gameObject.transform.position = _startTransform.position;
+        _isAlive = true; 
         _sprite.enabled = true;
         Debug.Log("Player finished dying");
     }
