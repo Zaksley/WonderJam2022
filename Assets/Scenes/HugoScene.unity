@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191bed7a1b10fda428397d2115f70d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 0}
+  textPrefab: {fileID: 2316665219242001785, guid: 315037b1a938e784e91ada3663fae82f, type: 3}
   sr: {fileID: 1774002996}
   linesContainer: {fileID: 156710676}
 --- !u!1 &1774002991
@@ -650,13 +650,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8157326222249471999, guid: 315037b1a938e784e91ada3663fae82f, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 0dd6266b55528ea48a1b021bd2f77a53, type: 2}
-    - target: {fileID: 8157326222249471999, guid: 315037b1a938e784e91ada3663fae82f, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 90167309956590084, guid: 0dd6266b55528ea48a1b021bd2f77a53, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315037b1a938e784e91ada3663fae82f, type: 3}
