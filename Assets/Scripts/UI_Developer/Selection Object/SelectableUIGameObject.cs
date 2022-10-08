@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectableUIGameObject : MonoBehaviour
@@ -8,9 +9,10 @@ public class SelectableUIGameObject : MonoBehaviour
     public GameObject ObjectToSelect;
     public Button ButtonToSelect;
 
+    private bool _mouseOverUI = false;
     private bool _clickOnChildren = false;
     private bool _mouseIsExit = false;
-    private bool _isSelected = false;
+    public bool _isSelected = false;
 
     [SerializeField] private List<GameObject> _childrenUI = new List<GameObject>();
 
@@ -21,56 +23,69 @@ public class SelectableUIGameObject : MonoBehaviour
 
     void Update()
     {
+        _mouseOverUI = MouseOverUI();
+
         // Manage the developer/plateformer mode of the game
         if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
         {
             UnselectAll();
-            return; 
+            return;
         }
-        
-        if (Input.GetMouseButtonDown(0) && _mouseIsExit && _isSelected)
+
+        if (Input.GetMouseButtonDown(0) &&_mouseIsExit)
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-          
-            if (rayHit.transform == null)
-            {
-                Debug.Log("ray update");
-                UnselectAll();
-                return; 
-            }
 
-            _clickOnChildren = ClickOnChildren(rayHit);
-            if (!_clickOnChildren)
+            if(rayHit.transform.gameObject != ObjectToSelect.gameObject)
             {
-                UnselectAll();
-                return; 
-            }
-            
-            // if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
-            // {
-            //     Debug.Log("QUEL EST CE CAS WSH");
-            //     UnselectAll();
-            //     return; 
-            // }
+                if (rayHit.transform != null)
+                {
+                    _clickOnChildren = ClickOnChildren(rayHit);
 
-                // if (rayHit.transform != null)
-            // {
-            //     if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
-            //     {
-            //         UnselectAll(); 
-            //     }
-            //     else
-            //     {
-            //         _clickOnChildren = false;
-            //     }
-            // }
-        }
+                    if (!_clickOnChildren)
+                    {
+                        UnselectAll();
+
+                    }
+                }
+                else
+                {
+                    UnselectAll();
+                }
+            }
+        } 
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+
+        //    if (rayHit.transform != null)
+        //    {
+        //        _clickOnChildren = ClickOnChildren(rayHit);
+
+        //        if (!_clickOnChildren)
+        //        {
+        //            UnselectAll();
+
+        //        }
+        //    }
+        //    else
+        //    {
+                
+        //            UnselectAll();
+                
+        //    }
+        //}
+    }
+
+    private bool MouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     // Check if we clicked on a children
     private bool ClickOnChildren(RaycastHit2D rayHit)
     {
-        foreach(GameObject obj in _childrenUI)
+        foreach (GameObject obj in _childrenUI)
         {
             if (rayHit.transform.gameObject == obj)
             {
@@ -78,7 +93,7 @@ public class SelectableUIGameObject : MonoBehaviour
             }
         }
 
-        return false; 
+        return false;
     }
 
     private void EnableUIObject(bool stateObject)
@@ -88,36 +103,38 @@ public class SelectableUIGameObject : MonoBehaviour
             _childrenUI[indexUI].SetActive(stateObject);
         }
     }
-    
+
     public void SelectGameObject()
     {
-        Debug.Log("button update");
-        if (GlobalVariable.ButtonSelected != null)
-        {
-            UnSelectButton();
-        }
+        //Debug.Log("click button");
+        //if (GlobalVariable.ButtonSelected != null || !_isSelected)
+        //{
+        //    UnSelectButton();
+        //}
+
         if (GlobalVariable.ObjectSelected != null)
         {
-            GlobalVariable.ObjectSelected.GetComponent<cakeslice.Outline>().enabled = false;
+            UnSelectGameObject();
+
         }
         ObjectToSelect.GetComponent<cakeslice.Outline>().enabled = true;
         GlobalVariable.ObjectSelected = ObjectToSelect;
         UpdateUIObject(true);
+
     }
 
-    public void UpdateSelection()
+    public void ClickButton()
     {
-        if (_isSelected)
-        {
-            UnselectAll();
-        }
-        else
-        {
-            Debug.Log("Selection par ici");
             SelectGameObject();
             SelectButton();
             UpdateUIObject(true);
-        }
+    }
+
+    public void ClickGameObject()
+    {
+        SelectGameObject();
+        SelectButton();
+        UpdateUIObject(true);
     }
 
     public void UnSelectButton()
@@ -133,6 +150,7 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private void UnselectAll()
     {
+        Debug.Log("unselect all");
         UpdateUIObject(false);
         UnSelectButton();
         UnSelectGameObject();
@@ -156,6 +174,7 @@ public class SelectableUIGameObject : MonoBehaviour
         {
             UnSelectButton();
         }
+        ButtonToSelect.Select();
         var colors = ButtonToSelect.colors;
         colors.normalColor = Color.red;
         ButtonToSelect.colors = colors;
@@ -164,10 +183,10 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("click button");
-        UpdateSelection(); 
-        // SelectGameObject();
-        // SelectButton();
+        ClickGameObject();
+        //UpdateSelection();
+        //SelectGameObject();
+        //SelectButton();
     }
     private void OnMouseExit()
     {
