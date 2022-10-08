@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D))]
 public class StayInBounds : MonoBehaviour
 {
     [SerializeField] private Vector2 _bounds;
@@ -14,7 +14,7 @@ public class StayInBounds : MonoBehaviour
     private void Start()
     {
         _initialPosition = gameObject.transform.position;
-        _spriteSize = transform.GetComponent<SpriteRenderer>().bounds.size / 2.0f;
+        _spriteSize = transform.GetComponent<Collider2D>().bounds.size / 2.0f;
     }
 
     private void Awake()
