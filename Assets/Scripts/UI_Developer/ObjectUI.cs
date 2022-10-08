@@ -6,6 +6,12 @@ public class ObjectUI : MonoBehaviour
 {
     private Canvas _canvas;
 
+    [SerializeField]
+    private GameObject CollisionToggleGameObject;
+
+    [SerializeField]
+    private GameObject GravityToggleGameObject;
+
     private void Start()
     {
         _canvas = GetComponent<Canvas>();
@@ -13,6 +19,15 @@ public class ObjectUI : MonoBehaviour
 
     private void Update()
     {
-        _canvas.enabled = (GlobalVariable.ObjectSelected != null);
+        if(GlobalVariable.ObjectSelected != null)
+        {
+            _canvas.enabled=true;
+            CollisionToggleGameObject.SetActive(GlobalVariable.ObjectSelected.GetComponent<ObjectProperties>().collision);
+            GravityToggleGameObject.SetActive(GlobalVariable.ObjectSelected.GetComponent<ObjectProperties>().gravity);
+        }
+        else
+        {
+            _canvas.enabled = false;
+        }
     }
 }

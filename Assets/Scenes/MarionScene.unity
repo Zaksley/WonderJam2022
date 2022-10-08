@@ -729,6 +729,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: gravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: collision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
       value: 
       objectReference: {fileID: 1074686444}
@@ -1438,6 +1446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad9c4193ff3ea140bc13b796ac4b3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollisionToggleGameObject: {fileID: 1074686442}
+  GravityToggleGameObject: {fileID: 1491247625}
 --- !u!1 &606735611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2007,10 @@ PrefabInstance:
     - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: collision
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
@@ -3019,6 +3033,10 @@ PrefabInstance:
     - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: gravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
