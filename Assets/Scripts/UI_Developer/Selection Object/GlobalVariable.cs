@@ -7,4 +7,5 @@ public class GlobalVariable
 {
     public static GameObject ObjectSelected;
     public static Button ButtonSelected;
+
 }

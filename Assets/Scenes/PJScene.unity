@@ -130,13 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _bounds.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2265418218243778502, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _bounds.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.2
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_LocalPosition.y
@@ -178,28 +186,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlateformMovable
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1652160459812622742, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+    - target: {fileID: 3537877584631929051, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88cd23a618102ad47ab908b357208991, type: 3}
---- !u!1 &170670604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2855799472527770270, guid: 88cd23a618102ad47ab908b357208991, type: 3}
-  m_PrefabInstance: {fileID: 170670603}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &170670605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170670604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee02d364584142a19490c7c727952884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bounds: {x: 2, y: 2}
-  _gizmoColor: {r: 1, g: 0, b: 0, a: 0.25}
 --- !u!1 &416500811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9754482e552ebb46a6b2205979e6fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _spriteEndLevel: {fileID: 0}
 --- !u!1 &2096905816
 GameObject:
   m_ObjectHideFlags: 0
