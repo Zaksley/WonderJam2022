@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 5519553313401940432}
   - component: {fileID: 5519553313401940433}
   - component: {fileID: 5519553313401940435}
-  - component: {fileID: 1652160459812622742}
+  - component: {fileID: -2265418218243778502}
   m_Layer: 3
   m_Name: PlateformMovable
   m_TagString: Untagged
@@ -356,7 +356,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0019938946, y: -0.004488319}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.6666667, y: 1.1666667, z: 0.6666667, w: 1.1666667}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 2.6666667}
     newSize: {x: 3.2, y: 3.2}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 50
   eraseRenderer: 0
---- !u!114 &1652160459812622742
+--- !u!114 &-2265418218243778502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,6 +419,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2855799472527770270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e17736ccddd44320ba4c4e1f6b3784c7, type: 3}
+  m_Script: {fileID: 11500000, guid: ee02d364584142a19490c7c727952884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bounds: {x: 0, y: 0}
+  _gizmoColor: {r: 1, g: 0, b: 0, a: 0.25}
