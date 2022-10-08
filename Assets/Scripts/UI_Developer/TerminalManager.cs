@@ -7,7 +7,7 @@ public class TerminalManager : MonoBehaviour
     // Theme for colors, default is white
     System.Collections.Generic.Dictionary<string, string> colors = new System.Collections.Generic.Dictionary<string, string>()
     {
-        {"red", "#AF7176"},
+        {"rede", "#AF7176"},
         {"green", "#13A10E"},
         {"yellow", "#C19C00"},
         {"blue", "#0037DA"},
@@ -16,51 +16,79 @@ public class TerminalManager : MonoBehaviour
     };
 
     // References to our prefab
-    public GameObject textPrefab;
-    public ScrollRect sr;
+    public GameObject terminalLine;
     public GameObject linesContainer;
 
-    int a = 0;
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            this.Log("HELLO");
+            // This is how you can use the terminal
+            // TODO : size of text and terminal must be setup in the main scene
+            this.Log($"{Red("ENZO")}\nHELLO WORLD");
+            this.Log("TEST WITH A VERY LONG STRING \n TEST WITH A VERY LONG STRING TEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRING");
         }
     }
 
-    private string FormatConsoleText(string text)
+    /*
+    * Add console prefix : hour + C:\User...
+    * Hour is based on the real user your
+    */
+    private string AddConsolePrefix(string text)
     {
-        a = a + 1;
         string hourInfo = System.DateTime.Now.ToString("[hh:mm]");
-        return $"{Yellow(hourInfo)} C:\\Users\\Poutine> {text} {a}";
+        return $"{Yellow(hourInfo)} C:\\Users\\Poutine> {text}";
+    }
+
+    /*
+    * Add heavy string tags to colorize the text
+    * Theme is defined by colors variable
+    */
+    private string ColorString(string text, string color)
+    {
+        return "<color=" + color + ">" + text + "</color>";
+    }
+
+    /*
+    * TODO
+    * Delete logs (gameObjects) that are not visible anymore
+    */
+    private void DeleteOldLogs()
+    {
     }
 
     /*
     * Public interface to Log and manage text color
+    * TODO : use static keyword
     */
 
     public void Log(string text)
     {
-        // Scale scroll rect depending on the content
-        Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
-        linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + 35.0f);
-
         // Create a new line
-        GameObject newLine = Instantiate(textPrefab, linesContainer.transform);
+        GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
 
         // Set child index to respect the console line order
         newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
 
         // Set the text
-        newLine.GetComponentInChildren<TextMeshProUGUI>().text = FormatConsoleText(text);
+        newLine.GetComponentInChildren<TextMeshProUGUI>().text = AddConsolePrefix(text);
 
+        // Get height of the text and scale scroll rect and text container depending on the content
+        float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
+        // Scale scroll rect
+        Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
+        linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize + 5); // 5 is spacing in vertical layer group
+        // Scale text container
+        Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
+        newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
+
+        // TODO
+        // DeleteOldLogs();
     }
 
     public string Red(string text)
     {
-        return ColorString(text, "red");
+        return ColorString(text, "rede");
     }
 
     public string Green(string text)
@@ -85,10 +113,5 @@ public class TerminalManager : MonoBehaviour
     public string Cyan(string text)
     {
         return ColorString(text, "cyan");
-    }
-
-    private string ColorString(string text, string color)
-    {
-        return "<color=" + color + ">" + text + "</color>";
     }
 }
