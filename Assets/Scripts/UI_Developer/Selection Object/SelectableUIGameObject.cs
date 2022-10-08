@@ -1,12 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using cakeslice;
 using UnityEngine.UI;
 
 public class SelectableUIGameObject : MonoBehaviour
 {
-
     public GameObject ObjectToSelect;
     public Button ButtonToSelect;
 
@@ -16,12 +13,15 @@ public class SelectableUIGameObject : MonoBehaviour
 
     [SerializeField] private List<GameObject> _childrenUI = new List<GameObject>();
 
+    private void Start()
+    {
+        UpdateUIObject(false);
+    }
+
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0) && _mouseIsExit)
         {
-           
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             foreach(GameObject obj in _childrenUI)
             {
@@ -32,9 +32,7 @@ public class SelectableUIGameObject : MonoBehaviour
             }
             if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
             {
-                UnSelectGameObject();
-                UnSelectButton();
-                UpdateUIObject(false);
+                UnselectAll(); 
             }
             else
             {
@@ -44,11 +42,8 @@ public class SelectableUIGameObject : MonoBehaviour
 
         if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
         {
-            UpdateUIObject(false);
-            UnSelectGameObject();
-            UnSelectButton();
+            UnselectAll(); 
         }
-
     }
 
     private void EnableUIObject(bool stateObject)
@@ -58,8 +53,7 @@ public class SelectableUIGameObject : MonoBehaviour
             _childrenUI[indexUI].SetActive(stateObject);
         }
     }
-
-
+    
     public void SelectGameObject()
     {
         if (GlobalVariable.ButtonSelected != null)
@@ -73,7 +67,6 @@ public class SelectableUIGameObject : MonoBehaviour
         ObjectToSelect.GetComponent<cakeslice.Outline>().enabled = true;
         GlobalVariable.ObjectSelected = ObjectToSelect;
         UpdateUIObject(true);
-
     }
 
     public void UnSelectButton()
@@ -82,7 +75,13 @@ public class SelectableUIGameObject : MonoBehaviour
         colors.normalColor = Color.white;
         GlobalVariable.ButtonSelected.colors = colors;
         GlobalVariable.ButtonSelected = null;
+    }
 
+    private void UnselectAll()
+    {
+        UpdateUIObject(false);
+        UnSelectGameObject();
+        UnSelectButton();
     }
 
     private void UpdateUIObject(bool state)

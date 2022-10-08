@@ -18,8 +18,13 @@ public class ObjectsInCameraScreen : MonoBehaviour
     void LateUpdate()
     {
         Vector3 viewPos = transform.position;
-        viewPos.x = Mathf.Clamp(viewPos.x, _screenBounds.x * -1 + _objectWidth, _screenBounds.x - _objectWidth); 
-        viewPos.y = Mathf.Clamp(viewPos.y, _screenBounds.y * -1 + _objectHeight, _screenBounds.y - _objectHeight);
+        viewPos.x = Mathf.Clamp(viewPos.x, 
+            Camera.main.transform.position.x + _screenBounds.x * -1 + _objectWidth, 
+            Camera.main.transform.position.x +_screenBounds.x - _objectWidth); 
+        
+        viewPos.y = Mathf.Clamp(viewPos.y, 
+            Camera.main.transform.position.y +_screenBounds.y * -1 + _objectHeight, 
+            Camera.main.transform.position.y +_screenBounds.y - _objectHeight);
         transform.position = viewPos; 
     }
 }

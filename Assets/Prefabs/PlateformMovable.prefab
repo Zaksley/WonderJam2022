@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855799471182470347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.004, z: -0.1}
+  m_LocalPosition: {x: -0.004, y: 0.375, z: -0.1}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0001256764, y: -0.21912743}
+  m_Offset: {x: -0.00012540817, y: -0.1092149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2495485, y: 0.43419597}
+  m_Size: {x: 0.114471436, y: 0.21942428}
   m_EdgeRadius: 0
 --- !u!61 &2855799471182470344
 BoxCollider2D:
@@ -126,18 +126,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009727865, y: 0.21790269}
+  m_Offset: {x: 0.0016419888, y: 0.10925482}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7568038, y: 0.447856}
+  m_Size: {x: 0.3803258, y: 0.22298014}
   m_EdgeRadius: 0
 --- !u!114 &2855799471182470345
 MonoBehaviour:
@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855799472125365867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.002, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0.495, y: 0, z: -0.1}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -252,18 +252,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21784821, y: -0.00083068013}
+  m_Offset: {x: -0.106455356, y: -0.00083069503}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43897837, y: 0.24858528}
+  m_Size: {x: 0.21619266, y: 0.12423977}
   m_EdgeRadius: 0
 --- !u!61 &2855799472125365864
 BoxCollider2D:
@@ -278,18 +278,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21874225, y: -0.0045268834}
+  m_Offset: {x: 0.1084429, y: 0.0008535683}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4402902, y: 0.7464959}
+  m_Size: {x: 0.21969151, y: 0.37847275}
   m_EdgeRadius: 0
 --- !u!114 &2855799472125365865
 MonoBehaviour:
@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 5519553313401940432}
   - component: {fileID: 5519553313401940433}
   - component: {fileID: 5519553313401940435}
+  - component: {fileID: 1652160459812622742}
   m_Layer: 3
   m_Name: PlateformMovable
   m_TagString: Untagged
@@ -407,18 +408,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000023841858, y: -0.0024949014}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 2}
+    oldSize: {x: 1, y: 0.6666667}
     newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 2}
+  m_Size: {x: 1.0042424, y: 0.6678316}
   m_EdgeRadius: 0
 --- !u!114 &5519553313401940432
 MonoBehaviour:
@@ -463,3 +464,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 50
   eraseRenderer: 0
+--- !u!114 &1652160459812622742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855799472527770270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17736ccddd44320ba4c4e1f6b3784c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
