@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class WinZoneController : MonoBehaviour
@@ -9,7 +12,8 @@ public class WinZoneController : MonoBehaviour
     private Animator _animator; 
     
     // Sprite
-    [SerializeField] private Sprite _spriteEndLevel; 
+    [SerializeField] private Sprite _spriteEndLevel;
+    private float _timeJumpNextScene = 0.5f; 
     
     private void Start()
     {
@@ -33,8 +37,14 @@ public class WinZoneController : MonoBehaviour
         {
             if (player.HasKey)
             {
-                Debug.Log("WINNER");
+                StartCoroutine(JumpNextScene()); 
             }
         }
+    }
+    
+    private IEnumerator JumpNextScene()
+    {
+        yield return new WaitForSeconds(_timeJumpNextScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
