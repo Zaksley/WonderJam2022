@@ -7,5 +7,6 @@ public class GlobalVariable
 {
     public static GameObject ObjectSelected;
     public static Button ButtonSelected;
+    public static List<GameObject> listChildrenGameObject=new List<GameObject>();
 
 }

@@ -215,74 +215,111 @@ public class SelectableUIGameObject : MonoBehaviour
     private bool _isSelected = false;
 
     [SerializeField] private List<GameObject> _childrenUI = new List<GameObject>();
-
+    private void Start()
+    {
+        EnableUIObject(false);
+       
+    }
     void Update()
     {
+        _clickOnChildren = false;
 
         if (Input.GetMouseButtonDown(0) && _mouseIsExit)
         {
-
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-            foreach (GameObject obj in _childrenUI)
+            if (rayHit.transform != null)
             {
-                if (rayHit.transform.gameObject == obj)
+                if(rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
                 {
-                    _clickOnChildren = true;
+                    foreach (GameObject obj in GlobalVariable.listChildrenGameObject)
+                    {
+                        if (rayHit.transform.gameObject == obj)
+                        {
+                            _clickOnChildren = true;
+
+                        }
+                    }
+                    Debug.Log(_clickOnChildren);
+                    if (!_clickOnChildren)
+                    {
+                        UnSelectGameObject();
+                        UnSelectButton();
+                        UnselectChildren();
+                    }
                 }
-            }
-            if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject && !_clickOnChildren)
-            {
-                UnSelectGameObject();
-                UnSelectButton();
-                UpdateUIObject(false);
+                
+
+                
             }
             else
             {
-                _clickOnChildren = false;
+                UnSelectGameObject();
+                UnSelectButton();
             }
+
         }
 
-        if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
+        //if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
+        //{
+        //    UpdateUIObject(false);
+        //    UnselectChildren();
+        //    UnSelectGameObject();
+        //    UnSelectButton();
+        //}
+
+    }
+
+    private void UnselectChildren()
+    {
+        for (int indexUI = 0; indexUI < GlobalVariable.listChildrenGameObject.Count; indexUI++)
         {
-            UpdateUIObject(false);
-            UnSelectGameObject();
-            UnSelectButton();
+            GlobalVariable.listChildrenGameObject[indexUI].SetActive(false);
+            
         }
 
     }
+   
 
     private void EnableUIObject(bool stateObject)
     {
         for (int indexUI = 0; indexUI < _childrenUI.Count; indexUI++)
         {
             _childrenUI[indexUI].SetActive(stateObject);
+            GlobalVariable.listChildrenGameObject.Add(_childrenUI[indexUI]);
+
         }
+        
     }
 
 
     public void SelectGameObject()
     {
+
         if (GlobalVariable.ButtonSelected != null)
         {
             UnSelectButton();
         }
         if (GlobalVariable.ObjectSelected != null)
         {
-            GlobalVariable.ObjectSelected.GetComponent<cakeslice.Outline>().enabled = false;
+            UnSelectGameObject();
         }
+
         ObjectToSelect.GetComponent<cakeslice.Outline>().enabled = true;
         GlobalVariable.ObjectSelected = ObjectToSelect;
-        UpdateUIObject(true);
+        EnableUIObject(true);
 
     }
 
     public void UnSelectButton()
     {
-        var colors = GlobalVariable.ButtonSelected.colors;
-        colors.normalColor = Color.white;
-        GlobalVariable.ButtonSelected.colors = colors;
-        GlobalVariable.ButtonSelected = null;
-
+        if (GlobalVariable.ButtonSelected != null)
+        {
+            var colors = GlobalVariable.ButtonSelected.colors;
+            colors.normalColor = Color.white;
+            GlobalVariable.ButtonSelected.colors = colors;
+            GlobalVariable.ButtonSelected = null;
+        }
+        
     }
 
     private void UpdateUIObject(bool state)
@@ -293,14 +330,17 @@ public class SelectableUIGameObject : MonoBehaviour
 
     public void UnSelectGameObject()
     {
-        GlobalVariable.ObjectSelected.GetComponent<cakeslice.Outline>().enabled = false;
-        GlobalVariable.ObjectSelected = null;
-        EnableUIObject(false);
+        if (GlobalVariable.ObjectSelected != null)
+        {
+            GlobalVariable.ObjectSelected.GetComponent<cakeslice.Outline>().enabled = false;
+            GlobalVariable.ObjectSelected = null;
+            UnselectChildren();
+        }
+        
     }
 
     public void SelectButton()
     {
-
         if (GlobalVariable.ButtonSelected != null)
         {
             UnSelectButton();
@@ -313,12 +353,14 @@ public class SelectableUIGameObject : MonoBehaviour
 
     private void OnMouseDown()
     {
+        
         SelectGameObject();
         SelectButton();
+        EnableUIObject(true);
     }
+    
     private void OnMouseExit()
     {
-        Debug.Log("exit");
         _mouseIsExit = true;
 
     }
