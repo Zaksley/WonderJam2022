@@ -223,7 +223,13 @@ public class SelectableUIGameObject : MonoBehaviour
     void Update()
     {
         _clickOnChildren = false;
-
+        if (GameManager.State != GameManager.PlayerState.DEVELOPER)
+        {
+          
+            UnSelectGameObject();
+            UnSelectButton();
+            return;
+        }
         if (Input.GetMouseButtonDown(0) && _mouseIsExit)
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
@@ -247,9 +253,6 @@ public class SelectableUIGameObject : MonoBehaviour
                         UnselectChildren();
                     }
                 }
-                
-
-                
             }
             else
             {
@@ -259,14 +262,7 @@ public class SelectableUIGameObject : MonoBehaviour
 
         }
 
-        //if (GameManager.State != GameManager.PlayerState.DEVELOPER && _isSelected)
-        //{
-        //    UpdateUIObject(false);
-        //    UnselectChildren();
-        //    UnSelectGameObject();
-        //    UnSelectButton();
-        //}
-
+        
     }
 
     private void UnselectChildren()
@@ -297,6 +293,7 @@ public class SelectableUIGameObject : MonoBehaviour
 
         if (GlobalVariable.ButtonSelected != null)
         {
+            Debug.Log("button selected");
             UnSelectButton();
         }
         if (GlobalVariable.ObjectSelected != null)
