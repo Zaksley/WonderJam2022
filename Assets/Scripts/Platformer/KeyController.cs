@@ -1,7 +1,8 @@
 using UnityEngine;
 
+
 [RequireComponent(typeof(Collider2D))]
-public class WinZoneController : MonoBehaviour
+public class KeyController : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -9,10 +10,8 @@ public class WinZoneController : MonoBehaviour
 
         if (player != null)
         {
-            if (player.HasKey)
-            {
-                Debug.Log("WINNER");
-            }
+            player.PlayerGotKey();
+            Destroy(gameObject);
         }
     }
 }
