@@ -25,38 +25,56 @@ public class TerminalManager : MonoBehaviour
     public float TIME_PER_CHAR = 0.05f;
     private float timer;
     private float oldSize;
-    public bool isReady = true;
+    public bool isWriting = false;
+
     private void Update()
     {
+        // always check if text must be written
         Write();
 
-        if (Input.GetKeyDown(KeyCode.Return) && isReady)
+        // This is how you can use the terminal
+        // TODO : size of text and terminal must be setup in the main scene
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            // This is how you can use the terminal
-            // TODO : size of text and terminal must be setup in the main scene
-            this.Log($"{Red("ENZO")}\nHELLO WORLD");
+            if (!isWriting)
+            {
+                this.Log($"{Red("ENZO")}HELLO WORLD");
+            }
+            else
+            {
+                WriteAll();
+            }
         }
     }
 
-    public void AddWriter(TextMeshProUGUI _textContainer, string _text)
+    /*
+    * Setup writer to the specified textContainer
+    */
+    private void AddWriter(TextMeshProUGUI _textContainer, string _text)
     {
         this.textContainer = _textContainer;
         this.text = _text;
-        this.isReady = false;
+        this.isWriting = true;
         this.indexWritten = 0;
         this.timer = 0;
         this.oldSize = 0;
     }
 
-
+    /*
+    * Write letter by letter in the textContainer
+    */
     private void Write()
     {
-        if (textContainer != null && !isReady)
+        if (isWriting)
         {
+            // check if text is written
             if (indexWritten >= text.Length)
             {
-                isReady = true;
+                isWriting = false;
+                return;
             }
+
+            // write letter depending on writing speed
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
@@ -69,22 +87,16 @@ public class TerminalManager : MonoBehaviour
     }
 
     /*
-    * Add console prefix : hour + C:\User...
-    * Hour is based on the real user your
+    * Write all letter textContainer
     */
-    private string AddConsolePrefix(string text)
+    private void WriteAll()
     {
-        string hourInfo = System.DateTime.Now.ToString("[hh:mm]");
-        return $"{Yellow(hourInfo)} C:\\Users\\Poutine> {text}";
-    }
-
-    /*
-    * Add heavy string tags to colorize the text
-    * Theme is defined by colors variable
-    */
-    private string ColorString(string text, string color)
-    {
-        return "<color=" + colors[color] + ">" + text + "</color>";
+        if (isWriting)
+        {
+            textContainer.text = text;
+            isWriting = false;
+            UpdateTextHeight();
+        }
     }
 
     /*
@@ -105,32 +117,53 @@ public class TerminalManager : MonoBehaviour
             Vector2 newLineSize = lineContainer.GetComponent<RectTransform>().sizeDelta;
             lineContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, newLineSize.y + textSize - oldSize);
             oldSize = textSize;
-
-            // TODO
-            // DeleteOldLogs();
         }
     }
+
     /*
-    * TODO
     * Delete logs (gameObjects) that are not visible anymore
+    * TODO : This can be optimised my detecting overflow on mask
     */
-    // private void DeleteOldLogs()
-    // {
-    //     // for childs
-    //     // if trop loin
-    //     // delete child
-    //     // reduce container size
-    //     foreach (Transform line in linesContainer.transform)
-    //     {
-    //      line.preferredHeight
-    //     }
-    // }
+    private void DeleteOldLogs()
+    {
+        // for childs
+        // if trop loin
+        // delete child
+        // reduce container size
+        foreach (Transform line in linesContainer.transform)
+        {
+            int lineIndex = line.GetSiblingIndex();
+            if (lineIndex > 5)
+            {
+                DestroyImmediate(line);
+            }
+        }
+    }
 
     /*
-    * Public interface to Log and manage text color
-    * TODO : use static keyword
-    */
+       * Add console prefix : hour + C:\User...
+       * Hour is based on the real user hour
+       */
+    private string AddConsolePrefix(string text)
+    {
+        string hourInfo = System.DateTime.Now.ToString("[hh:mm]");
+        return $"{Yellow(hourInfo)} C:\\Users\\Poutine> {text}";
+    }
 
+    /*
+    * Add heavy string tags to color the text
+    * Theme is defined by colors variable
+    * NB : if text start with color, text is consered as 0
+    * and this create visual bug with offcet
+    */
+    private string ColorString(string text, string color)
+    {
+        return " <color=" + colors[color] + ">" + text + "</color>";
+    }
+
+    /*
+    * Public interface to Log and use colored text
+    */
     public void Log(string text)
     {
         // Create a new line
@@ -140,17 +173,16 @@ public class TerminalManager : MonoBehaviour
         // newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
         newLine.transform.SetSiblingIndex(0);
 
-        // Set the text
-        // newLine.GetComponentInChildren<TextMeshProUGUI>().text = AddConsolePrefix(text);
+        // Add writer to the textContainer
         AddWriter(newLine.GetComponentInChildren<TextMeshProUGUI>(), AddConsolePrefix(text));
 
-        // Get height of the text and scale scroll rect and text container depending on the content
+        // Get height of the text and scale scroll rect and new line container depending on the content
         float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
         oldSize = textSize;
         // Scale scroll rect
         Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
         linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize + 5); // 5 is spacing in vertical layer group
-        // Scale text container
+        // Scale new line container                                                                                                                     // Scale text container
         Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
         newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
     }
@@ -174,6 +206,7 @@ public class TerminalManager : MonoBehaviour
     {
         return ColorString(text, "blue");
     }
+
     public string Purple(string text)
     {
         return ColorString(text, "purple");
