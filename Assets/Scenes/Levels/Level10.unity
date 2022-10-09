@@ -5768,6 +5768,7 @@ MonoBehaviour:
   _spriteCursor: {fileID: 2800000, guid: 99c8fa544b4cf034cb8a822ba26875ad, type: 3}
   _devClip: {fileID: 8300000, guid: 41aa3a8fdc432b6429d5c83dfe0aa28d, type: 3}
   _platformerClip: {fileID: 8300000, guid: f83b885753d50fc4a9bdf0ee6d1c3c70, type: 3}
+  _clickClip: {fileID: 8300000, guid: 88b1cb36e50a0d643840fe5cfade5dfb, type: 3}
 --- !u!4 &2041683758
 Transform:
   m_ObjectHideFlags: 0
