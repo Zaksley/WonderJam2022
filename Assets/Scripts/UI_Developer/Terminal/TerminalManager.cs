@@ -4,7 +4,7 @@ using TMPro;
 public class TerminalManager : MonoBehaviour
 {
     // Theme for colors, default is white
-    System.Collections.Generic.Dictionary<string, string> colors = new System.Collections.Generic.Dictionary<string, string>()
+    private System.Collections.Generic.Dictionary<string, string> colors = new System.Collections.Generic.Dictionary<string, string>()
     {
         {"red", "#AF7176"},
         {"green", "#13A10E"},
@@ -129,7 +129,7 @@ public class TerminalManager : MonoBehaviour
         if (linesContainer.transform.childCount > 5)
         {
             Transform removedChild = linesContainer.transform.GetChild(5);
-            
+
             // reduce lines container size
             float textSize = removedChild.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
 
