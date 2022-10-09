@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
     private Animator _animator;
+    private ParticleSystem _deathEffect;
     
     // Fields
     private float _lastHorizontalDirection = 0.0f;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _deathEffect = GetComponent<ParticleSystem>();
         gameObject.transform.position = _startTransform.position;
     }
     
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
     {
         _isAlive = false; 
         _sprite.enabled = false;
+        _deathEffect.Play();
         yield return new WaitForSeconds(_respawnTime);
         HasKey = false;
         GameManager.UpdatePlayerAliveStatus(); 
