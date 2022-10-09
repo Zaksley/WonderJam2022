@@ -7,9 +7,12 @@ public class KeyController : MonoBehaviour
 {
     public float floatFrequency = .5f;
     public float floatAmplitude = .01f;
+    
+    private float _startHeight;
 
     private void Start()
     {
+        _startHeight = transform.position.y;
         StartCoroutine(FloatAnimation());
         GameManager.OnPlayerDie += RestartKey; 
     }
@@ -34,12 +37,13 @@ public class KeyController : MonoBehaviour
     private IEnumerator FloatAnimation()
     {
         // Sine-like floating animation
-        Vector3 tmp = new Vector3();
-        while(true)
+        while (true)
         {
-            tmp = transform.position;
-            tmp.y = (float) Math.Sin(Time.fixedTime * Math.PI * floatFrequency) * floatAmplitude * .3f;
-            transform.position = tmp;
+            var nextPos = transform.position;
+            nextPos.y = _startHeight +
+                        (float)Math.Sin(Time.fixedTime * Math.PI * floatFrequency) * floatAmplitude * .3f;
+            transform.position = nextPos;
+
             yield return null;
         }
     }

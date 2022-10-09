@@ -3922,11 +3922,11 @@ PrefabInstance:
     - target: {fileID: 9048368659951241304, guid: 63387d7c37891a64e91e5793b44b3df2, type: 3}
       propertyPath: _gravityToggle
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1302347806}
     - target: {fileID: 9048368659951241304, guid: 63387d7c37891a64e91e5793b44b3df2, type: 3}
       propertyPath: _colliderToggle
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 419877122}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63387d7c37891a64e91e5793b44b3df2, type: 3}
 --- !u!4 &1620544175 stripped
@@ -5432,11 +5432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5472362633221506304, guid: f3f0fc2e588753e4e927f37b14407772, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.5
+      value: 18.2
       objectReference: {fileID: 0}
     - target: {fileID: 5472362633221506304, guid: f3f0fc2e588753e4e927f37b14407772, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.15
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 5472362633221506304, guid: f3f0fc2e588753e4e927f37b14407772, type: 3}
       propertyPath: m_LocalPosition.z
