@@ -19,7 +19,7 @@ public class Sentence
         {"s11", SystemInfo("Developper tools enabled. Press [A] to switch betweens UIs.")},
         {"s12", SystemWarning("USER WARNING.")},
         {"s13", SystemWarning("Editing this interface is likely to disturb and/or corrupt the system-world, and should not be done. Proceed anyway (at your own risk) ?")},
-        {"12", Player("...Thank you. Whoever you are.")},
+        {"13", Player("...Thank you. Whoever you are.")},
         
         // Level 3
         {"21", Player("Let's hurry. This place will not last much longer.")},
