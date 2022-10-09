@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         _isAlive = false;
         _sprite.enabled = false;
         _deathEffect.Play();
-        _playerAudioSource.PlayOneShot(_deathClip, 2f);
+        _playerAudioSource.PlayOneShot(_deathClip, 4f);
         yield return new WaitForSeconds(_respawnTime);
         HasKey = false;
         GameManager.UpdatePlayerAliveStatus();
