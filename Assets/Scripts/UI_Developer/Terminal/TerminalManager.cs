@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class TerminalManager : MonoBehaviour
@@ -7,7 +6,7 @@ public class TerminalManager : MonoBehaviour
     // Theme for colors, default is white
     System.Collections.Generic.Dictionary<string, string> colors = new System.Collections.Generic.Dictionary<string, string>()
     {
-        {"rede", "#AF7176"},
+        {"red", "#AF7176"},
         {"green", "#13A10E"},
         {"yellow", "#C19C00"},
         {"blue", "#0037DA"},
@@ -19,14 +18,50 @@ public class TerminalManager : MonoBehaviour
     public GameObject terminalLine;
     public GameObject linesContainer;
 
+    private TextMeshProUGUI textContainer;
+    private string text;
+    private int indexWritten;
+    public float TIME_PER_CHAR = 0.05f;
+    private float timer;
+    public bool isReady = true;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        Write();
+
+        if (Input.GetKeyDown(KeyCode.Return) && isReady)
         {
             // This is how you can use the terminal
             // TODO : size of text and terminal must be setup in the main scene
             this.Log($"{Red("ENZO")}\nHELLO WORLD");
-            this.Log("TEST WITH A VERY LONG STRING \n TEST WITH A VERY LONG STRING TEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRINGTEST WITH A VERY LONG STRING");
+        }
+    }
+
+    public void AddWriter(TextMeshProUGUI _textContainer, string _text)
+    {
+        this.textContainer = _textContainer;
+        this.text = _text;
+        this.isReady = false;
+        this.indexWritten = 0;
+        this.timer = 0;
+
+    }
+
+
+    private void Write()
+    {
+        if (textContainer != null && !isReady)
+        {
+            if (indexWritten >= text.Length)
+            {
+                isReady = true;
+            }
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                timer += TIME_PER_CHAR;
+                textContainer.text += text[indexWritten];
+                indexWritten++;
+            }
         }
     }
 
@@ -46,7 +81,7 @@ public class TerminalManager : MonoBehaviour
     */
     private string ColorString(string text, string color)
     {
-        return "<color=" + color + ">" + text + "</color>";
+        return "<color=" + colors[color] + ">" + text + "</color>";
     }
 
     /*
@@ -71,7 +106,8 @@ public class TerminalManager : MonoBehaviour
         newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
 
         // Set the text
-        newLine.GetComponentInChildren<TextMeshProUGUI>().text = AddConsolePrefix(text);
+        newLine.GetComponentInChildren<TextMeshProUGUI>().text = " ";
+        AddWriter(newLine.GetComponentInChildren<TextMeshProUGUI>(), AddConsolePrefix(text));
 
         // Get height of the text and scale scroll rect and text container depending on the content
         float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
@@ -88,7 +124,7 @@ public class TerminalManager : MonoBehaviour
 
     public string Red(string text)
     {
-        return ColorString(text, "rede");
+        return ColorString(text, "red");
     }
 
     public string Green(string text)
