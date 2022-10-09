@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e13cf83d94c1448b308fa8e46604b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlitchedSprite: {fileID: 0}
+  GlitchedSprite: {fileID: 21300000, guid: d9d4412b0b5874c47a352b6a3a6d31f1, type: 3}
   ArrowDirection: 1
 --- !u!1 &2855799472125365867
 GameObject:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e13cf83d94c1448b308fa8e46604b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlitchedSprite: {fileID: 0}
+  GlitchedSprite: {fileID: 21300000, guid: d9d4412b0b5874c47a352b6a3a6d31f1, type: 3}
   ArrowDirection: 0
 --- !u!1 &2855799472527770270
 GameObject:

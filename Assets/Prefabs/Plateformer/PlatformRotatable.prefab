@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8319856853020891868}
+  - component: {fileID: 5862603073520356548}
   m_Layer: 0
   m_Name: PlatformRotatable
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5862603073520356548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320737906665809440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d648350d0f944903b967bcd542bf7f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _respawnTime: 0.5
 --- !u!1 &4415663440830719096
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +188,6 @@ GameObject:
   - component: {fileID: 3867441559888517229}
   - component: {fileID: 3867441559888517231}
   - component: {fileID: 9048368659951241304}
-  - component: {fileID: 2877163018851790417}
   m_Layer: 3
   m_Name: Platform
   m_TagString: Untagged
@@ -335,16 +348,3 @@ MonoBehaviour:
   UseLineRenderer: 0
   _colliderToggle: {fileID: 0}
   _gravityToggle: {fileID: 0}
---- !u!114 &2877163018851790417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814891371134972706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d648350d0f944903b967bcd542bf7f4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _respawnTime: 0.5
