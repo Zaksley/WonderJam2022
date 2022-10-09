@@ -66,19 +66,26 @@ public class ObjectProperties : MonoBehaviour
 
     private void SyncUI()
     {
-        _colliderToggle.isOn = (_collider.gameObject.layer == _platformLayer);
-        _gravityToggle.isOn = (_simulate.WantedGravityScale < 1.0f);
+        if (collision)
+        {
+            _colliderToggle.isOn = (_collider.gameObject.layer == _platformLayer);
+        }
+
+        if (gravity)
+        {
+            _gravityToggle.isOn = (_simulate.WantedGravityScale < 1.0f);
+        }
     }
         
     private void SetColliderEnabled(bool value)
     {
-        if (IsActive)
+        if (IsActive && collision)
             _collider.gameObject.layer = value ? _platformLayer : _withoutPlayerLayer;
     }
 
     private void ChangeGravityValue(bool value)
     {
-        if (IsActive)
+        if (IsActive && gravity)
             _simulate.WantedGravityScale = value ? -1.0f : 1.0f;
     }
 }

@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level5.unity
     guid: 9e1f541532c20384bad020dcc14f09ae
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level6.unity
+    guid: 9ef531eb4798aa642af12a2a16ccf0b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level7.unity
+    guid: 553ff766128667748900112f825f68b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level8.unity
+    guid: f7a0a02fdc9dfb845a7931fc4dfcce67
   - enabled: 0
     path: Assets/Scenes/EnzoScene.unity
     guid: 6a1584e7bdc7b3c48bbcca24c8f0d52d
