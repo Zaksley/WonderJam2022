@@ -9,6 +9,8 @@ public class Sentence
     {
         // TODO complete this
         // Id is based on [level][part]
+        // Default sentence
+        {"00", AddSystemPrefix("Press 'a' to call the devs.")},
         // Level 0
         {"01", AddSystemPrefix("Anomaly detected in the system-world. Closing procedure initiated...")},
         // Level 1
