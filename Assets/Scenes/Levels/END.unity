@@ -1213,6 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terminalManager: {fileID: 160057135}
   _endSentence: 
+  _spriteCursor: {fileID: 2800000, guid: 99c8fa544b4cf034cb8a822ba26875ad, type: 3}
 --- !u!4 &1608663790
 Transform:
   m_ObjectHideFlags: 0
