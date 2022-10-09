@@ -3090,7 +3090,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1127886509}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &926593484
 TilemapCollider2D:
@@ -3319,8 +3319,8 @@ Tilemap:
   - first: {x: 4, y: -5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 21
+      m_TileSpriteIndex: 21
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3379,8 +3379,8 @@ Tilemap:
   - first: {x: 13, y: -5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 19
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3429,8 +3429,8 @@ Tilemap:
   - first: {x: 5, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 15
-      m_TileSpriteIndex: 14
+      m_TileIndex: 20
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3519,8 +3519,8 @@ Tilemap:
   - first: {x: 4, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 16
-      m_TileSpriteIndex: 15
+      m_TileIndex: 18
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3559,8 +3559,8 @@ Tilemap:
   - first: {x: 11, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 16
-      m_TileSpriteIndex: 15
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3579,8 +3579,8 @@ Tilemap:
   - first: {x: 13, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 16
-      m_TileSpriteIndex: 15
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3648,15 +3648,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: ec77fa98549162843ba1cb1c4a354ace, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 5d266d9ce1551524dbd30d243a4302d9, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: c28b986a7ed5ac4468bce13e16e97efc, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 46235c8ed52d6924caeacbc8b3fd9bf8, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 11383d96dcc2cb0428ca59e4eb9ab6c5, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 00185e01dc049274b9b32d430daa4b9d, type: 2}
@@ -3678,20 +3678,30 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 649b8f66a1f24dc47bcc163c90f67340, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: daa62337f0cd267459ef802ef4f2c093, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 5dcb90792ed00ee448d232c15efeb833, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 0bcdc4952ac19fe4caee3da195815c05, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 52b84beb1eabdfa4b830b0fb246b77ab, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 8f847e31228b27e458529d716c65d5a7, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 36342fa0fe2fb7f4482e4244aaa402c3, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: ad8835a9cf370384bbbd5b84517a3c67, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 6efe370975b633149968139f129edb7c, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -325206086, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1751101919, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 356136543, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 993324281, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 4
     m_Data: {fileID: 1524686882, guid: d3c6f97ed9972094eb14698a50d00c34, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1527300410, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
@@ -3711,12 +3721,22 @@ Tilemap:
     m_Data: {fileID: 940835415, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 827997322, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: -1693830864, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 3
     m_Data: {fileID: 1447843735, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1457820669, guid: d37c093d84320b0438578842d84b2a0f, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1431151120, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1609899965, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1523502714, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 790700059, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1271536831, guid: b92972a6f35781b41ac87813bdd195b4, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 48
     m_Data:
@@ -3827,7 +3847,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1127886509}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &977598806
 TilemapRenderer:
@@ -4218,8 +4238,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 926593483}
   - {fileID: 977598805}
+  - {fileID: 926593483}
   m_Father: {fileID: 508619541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
