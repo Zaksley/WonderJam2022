@@ -524,6 +524,7 @@ MonoBehaviour:
   linesContainer: {fileID: 7204753327952124418}
   TIME_PER_CHAR: 0.05
   isWriting: 0
+  enablingTutorial: 0
 --- !u!224 &425499078 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1111799024402340506, guid: f4016949723a08744974e136066e9c0e, type: 3}
