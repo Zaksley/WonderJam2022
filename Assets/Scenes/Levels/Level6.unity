@@ -1637,6 +1637,7 @@ MonoBehaviour:
   linesContainer: {fileID: 1205184790}
   TIME_PER_CHAR: 0.03
   isWriting: 0
+  enablingTutorial: 1
 --- !u!224 &499771745
 RectTransform:
   m_ObjectHideFlags: 0

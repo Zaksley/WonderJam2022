@@ -32,7 +32,7 @@ public class TerminalManager : MonoBehaviour
     {
         if (enablingTutorial)
         {
-            LogSentence("00");
+            LogSentence("s11");
         }
     }
 

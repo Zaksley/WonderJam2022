@@ -5761,6 +5761,14 @@ PrefabInstance:
       propertyPath: _colliderToggle
       value: 
       objectReference: {fileID: 1416234492}
+    - target: {fileID: 2855799471182470345, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: terminalManager
+      value: 
+      objectReference: {fileID: 1971335631}
+    - target: {fileID: 2855799472125365865, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: terminalManager
+      value: 
+      objectReference: {fileID: 1971335631}
     - target: {fileID: 2855799472527770268, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6592,6 +6600,7 @@ MonoBehaviour:
   linesContainer: {fileID: 1921271031}
   TIME_PER_CHAR: 0.03
   isWriting: 0
+  enablingTutorial: 1
 --- !u!224 &1971335632
 RectTransform:
   m_ObjectHideFlags: 0

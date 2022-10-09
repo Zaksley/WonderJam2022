@@ -7,7 +7,7 @@ public class MoveObjectByArrow : MonoBehaviour
         HORIZONTAL,
         VERTICAL
     };
-    
+
     private Vector3 _offset;
     public Sprite GlitchedSprite;
 
@@ -52,7 +52,6 @@ public class MoveObjectByArrow : MonoBehaviour
 
     private void SwitchToGlitchedSprite()
     {
-        Debug.Log("Glitched now");
         transform.parent.GetComponent<SpriteRenderer>().sprite = GlitchedSprite;
     }
 
