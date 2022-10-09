@@ -2572,6 +2572,7 @@ MonoBehaviour:
   linesContainer: {fileID: 101900844}
   TIME_PER_CHAR: 0.03
   isWriting: 0
+  enablingTutorial: 1
 --- !u!224 &842068670
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4969,11 +4970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[0]
-      value: 51
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[1]
-      value: 13
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[2]
@@ -4997,7 +4998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003213, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.98
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003213, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5130,7 +5131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[0]
-      value: 52
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[1]
