@@ -38,7 +38,7 @@ public class TerminalManager : MonoBehaviour
         {
             if (!isWriting)
             {
-                this.Log($"{Red("ENZO")}HELLO WORLD");
+                this.Log($"H");
             }
             else
             {
@@ -126,9 +126,9 @@ public class TerminalManager : MonoBehaviour
     */
     private void DeleteOldLogs()
     {
-        if (linesContainer.transform.childCount > 5)
+        if (linesContainer.transform.childCount > 19)
         {
-            Transform removedChild = linesContainer.transform.GetChild(5);
+            Transform removedChild = linesContainer.transform.GetChild(18);
 
             // reduce lines container size
             float textSize = removedChild.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
@@ -160,7 +160,7 @@ public class TerminalManager : MonoBehaviour
     */
     private string ColorString(string text, string color)
     {
-        return " <color=" + colors[color] + ">" + text + "</color>";
+        return "<color=" + colors[color] + ">" + text + "</color>";
     }
 
     /*
