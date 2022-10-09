@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     
     // Fields
+    private float _lastHorizontalDirection = 0.0f;
     private float _horizontalDirection = 0.0f;
     private bool _shouldJump = false;
     private bool _isGrounded = false;
@@ -143,6 +144,9 @@ public class PlayerController : MonoBehaviour
     // Update variables from inputs
     private void ProcessInputs()
     {
+        if (_horizontalDirection != 0.0f)
+            _lastHorizontalDirection = _horizontalDirection;
+
         _horizontalDirection = Input.GetAxisRaw("Horizontal");
         
         if (!_shouldJump && _isGrounded)
@@ -155,6 +159,6 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat(HorizontalVelocityHash, Mathf.Abs(_body.velocity.x));
         _animator.SetFloat(VerticalVelocityHash, _body.velocity.y);
         _animator.SetBool(JumpingHash, !_isGrounded);
-        _sprite.flipX = _body.velocity.x < 0.0f;
+        _sprite.flipX = _lastHorizontalDirection < 0.5f; // _body.velocity.x < 0.0f;
     }
 }
