@@ -24,7 +24,7 @@ public class TextColorizer
      */
     private string ColorString(string text, string color)
     {
-        return " <color=" + colors[color] + ">" + text + "</color>";
+        return "<color=" + colors[color] + ">" + text + "</color>";
     }
 
     /*
@@ -32,7 +32,7 @@ public class TextColorizer
     */
     public string CustomColor(string text, string hexColorCode)
     {
-        return $" <color={hexColorCode}>{text}</color>";
+        return $"<color={hexColorCode}>{text}</color>";
     }
 
     public string Red(string text)

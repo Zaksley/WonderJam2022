@@ -8,6 +8,7 @@ public class Sentence
         sentences = new System.Collections.Generic.Dictionary<string, string>()
     {
         // TODO complete this
+        // Id is based on [level][part]
         // Level 0
         {"01", AddSystemPrefix("Anomaly detected in the system-world. Closing procedure initiated...")},
         // Level 1
@@ -38,7 +39,7 @@ public class Sentence
     }
     TextColorizer textColorizer = new TextColorizer();
 
-    // Id is based on [level][part]
+    
 
     private string AddPlayerPrefix(string text)
     {

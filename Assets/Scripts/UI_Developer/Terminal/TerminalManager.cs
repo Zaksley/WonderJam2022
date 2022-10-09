@@ -32,7 +32,7 @@ public class TerminalManager : MonoBehaviour
         {
             if (!isWriting)
             {
-                this.Log($"H");
+                this.LogSentence("01");
             }
             else
             {
@@ -161,7 +161,6 @@ public class TerminalManager : MonoBehaviour
         GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
 
         // Set child index to respect the console line order, vertical layer is reversed
-        // newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
         newLine.transform.SetSiblingIndex(0);
 
         // Add writer to the textContainer
