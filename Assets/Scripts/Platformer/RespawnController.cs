@@ -6,8 +6,7 @@ using UnityEngine;
 public class RespawnController : MonoBehaviour
 {
     [SerializeField] private float _respawnTime = 1.0f;
-
-    private SpriteRenderer _sprite;
+    
     private ParticleSystem _deathEffect;
     private Rigidbody2D _rigidbody;
     private PlatformerSimulate _simulate;
@@ -17,12 +16,11 @@ public class RespawnController : MonoBehaviour
 
     private void Start()
     {
-        _sprite = GetComponent<SpriteRenderer>();
         _deathEffect = GetComponent<ParticleSystem>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _simulate = GetComponent<PlatformerSimulate>();
         _startPosition = transform.position;
-        _startRotation = transform.parent.rotation;
+        _startRotation = transform.rotation;
 
         if (_simulate != null && _rigidbody != null)
         {
@@ -42,7 +40,7 @@ public class RespawnController : MonoBehaviour
     private void ResetObject()
     {
         transform.position = _startPosition;
-        transform.parent.rotation = _startRotation;
+        transform.rotation = _startRotation;
 
         if (_simulate != null && _rigidbody != null)
         {
@@ -64,11 +62,9 @@ public class RespawnController : MonoBehaviour
     
     private IEnumerator WaitAndRespawn()
     {
-        _sprite.enabled = false;
         if (_deathEffect != null)
             _deathEffect.Play();
         yield return new WaitForSeconds(_respawnTime);
         ResetObject();
-        _sprite.enabled = true;
     }
 }
