@@ -46,8 +46,7 @@ public class ObjectProperties : MonoBehaviour
         
         _platformLayer = LayerMask.NameToLayer("Platform");
         _withoutPlayerLayer = LayerMask.NameToLayer("WithoutPlayer");
-
-        SyncUI();
+        
         _colliderToggle.onValueChanged.AddListener(SetColliderEnabled);
         _gravityToggle.onValueChanged.AddListener(ChangeGravityValue);
 
