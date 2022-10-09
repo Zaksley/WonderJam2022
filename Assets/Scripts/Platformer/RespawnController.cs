@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class RespawnController : MonoBehaviour
@@ -12,6 +13,7 @@ public class RespawnController : MonoBehaviour
     private PlatformerSimulate _simulate;
     private float _initialGravityScale;
     private Vector3 _startPosition;
+    private Quaternion _startRotation;
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class RespawnController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _simulate = GetComponent<PlatformerSimulate>();
         _startPosition = transform.position;
+        _startRotation = transform.parent.rotation;
 
         if (_simulate != null && _rigidbody != null)
         {
@@ -39,6 +42,7 @@ public class RespawnController : MonoBehaviour
     private void ResetObject()
     {
         transform.position = _startPosition;
+        transform.parent.rotation = _startRotation;
 
         if (_simulate != null && _rigidbody != null)
         {
