@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour
     private static readonly int VerticalVelocityHash = Animator.StringToHash("verticalVelocity");
     private static readonly int JumpingHash = Animator.StringToHash("jumping");
 
+    // Audio
+    private AudioSource _keyPickupSound;
+
     // Unity events
     
     private void Start()
@@ -51,6 +54,9 @@ public class PlayerController : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _deathEffect = GetComponent<ParticleSystem>();
+
+        _keyPickupSound = GetComponent<AudioSource>();
+
         gameObject.transform.position = _startTransform.position;
     }
     
@@ -73,6 +79,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerGotKey()
     {
         HasKey = true;
+        _keyPickupSound.PlayOneShot(_keyPickupSound.clip, 2f);
         GameManager.UpdatePlayerKeyStatus(); 
     }
 

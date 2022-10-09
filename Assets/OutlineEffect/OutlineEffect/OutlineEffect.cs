@@ -204,8 +204,8 @@ namespace cakeslice
 					renderTexture.Release();
 				if (extraRenderTexture != null)
 					renderTexture.Release();
-				renderTexture = new RenderTexture(sourceCamera.pixelWidth, sourceCamera.pixelHeight, (int)sourceCamera.depth + 15, RenderTextureFormat.Default);
-				extraRenderTexture = new RenderTexture(sourceCamera.pixelWidth, sourceCamera.pixelHeight, (int)sourceCamera.depth +15, RenderTextureFormat.Default);
+				renderTexture = new RenderTexture(sourceCamera.pixelWidth, sourceCamera.pixelHeight, 16, RenderTextureFormat.Default);
+				extraRenderTexture = new RenderTexture(sourceCamera.pixelWidth, sourceCamera.pixelHeight, 16, RenderTextureFormat.Default);
 				outlineCamera.targetTexture = renderTexture;
 			}
 			UpdateMaterialsPublicProperties();

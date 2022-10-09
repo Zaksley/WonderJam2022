@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terminalLine: {fileID: 51267440684422976, guid: be16684c263f10d49acd303db9ca9edc, type: 3}
   linesContainer: {fileID: 156710676}
-  TIME_PER_CHAR: 0.1
+  TIME_PER_CHAR: 0.05
   isWriting: 0
 --- !u!224 &1774002992 stripped
 RectTransform:

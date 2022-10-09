@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5519553313401940433}
   - component: {fileID: 5519553313401940435}
   - component: {fileID: 333493688261949924}
+  - component: {fileID: 226235129170680034}
   m_Layer: 3
   m_Name: PlateformCollision
   m_TagString: Untagged
@@ -174,3 +175,16 @@ MonoBehaviour:
   UseLineRenderer: 0
   _colliderToggle: {fileID: 0}
   _gravityToggle: {fileID: 0}
+--- !u!114 &226235129170680034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855799472527770270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d648350d0f944903b967bcd542bf7f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _respawnTime: 0.5
