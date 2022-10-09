@@ -2,14 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIMenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private Image devScreen;
+
     [SerializeField]
     private GameObject _mainCanvas;
 
     [SerializeField]
     private GameObject _creditCanavas;
+
+    private void Update()
+    {
+        
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene("Level0.5");
