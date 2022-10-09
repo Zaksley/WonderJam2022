@@ -37,22 +37,22 @@ public class TerminalManager : MonoBehaviour
     {
         // always check if text must be written
         Write();
-
-        // This is how you can use the terminal
-        // TODO : size of text and terminal must be setup in the main scene
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            // this.Log($"{textColorizer.Red("ENZO")}HELLO WORLD");
-            this.Log(aa[a]);
-            a++;
-            if (a == 4) {
-                a = 0;
-            }
-        }
-
+        
         if (Input.GetKeyDown("e")) {
             WriteAll();
         }
+
+        // DEBUG
+        // if (Input.GetKeyDown(KeyCode.Return))
+        // {
+        //     // this.Log($"{textColorizer.Red("ENZO")}HELLO WORLD");
+        //     this.Log(aa[a]);
+        //     a++;
+        //     if (a == 4) {
+        //         a = 0;
+        //     }
+        // }
+
     }
 
     /*
