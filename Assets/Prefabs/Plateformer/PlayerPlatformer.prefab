@@ -145,7 +145,7 @@ MonoBehaviour:
   _acceleration: 5
   _deceleration: 50
   _raycastOrigin: {fileID: 6662352766376245092}
-  _raycastLength: 0.05
+  _raycastLength: 0.1
   _startTransform: {fileID: 0}
   _respawnTime: 1
 --- !u!95 &4415820655805328583

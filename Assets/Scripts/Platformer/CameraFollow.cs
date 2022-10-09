@@ -1,35 +1,31 @@
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] public GameObject target;
-    [SerializeField] private float _followSpeed = 5f;
-    [SerializeField] private float _followDistance = 0.5f;
-    [SerializeField] private Camera _cam;
+    [SerializeField, Description("Between 0 and 1")] private float _smoothstepPerSecond = 2.75f;
+    [SerializeField] private Vector2 _offset = new Vector2(0.0f, 2.0f);
 
+    private Camera _cam;
+    private Vector3 _currentVelocity = Vector3.zero;
+    
     private void Start()
     {
         _cam = GetComponent<Camera>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (target == null)
             return;
 
-        var position = transform.position;
+        var position = _cam.transform.position;
         var targetPosition = target.transform.position;
         targetPosition.z = position.z;
-        var targetVector = targetPosition - position;
 
-        if (targetVector.magnitude > _followDistance)
-        {
-            transform.position = Vector3.Lerp(
-                transform.position,
-                targetPosition,
-                Time.deltaTime * _followSpeed
-            );
-        }
+        _cam.transform.position = Vector3.Lerp(position, targetPosition + new Vector3(_offset.x, _offset.y, 0.0f), Time.fixedDeltaTime * _smoothstepPerSecond);
     }
 }
