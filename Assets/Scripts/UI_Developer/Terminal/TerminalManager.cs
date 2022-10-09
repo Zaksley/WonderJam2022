@@ -50,7 +50,7 @@ public class TerminalManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("a")) {
+        if (Input.GetKeyDown("e")) {
             WriteAll();
         }
     }
