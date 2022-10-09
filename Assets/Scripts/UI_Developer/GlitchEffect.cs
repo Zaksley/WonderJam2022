@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlitchShake : MonoBehaviour
+public class GlitchEffect : MonoBehaviour
 {
     [Range(0.01f, 5f)] public float intensity = 1;
     public bool doGlitch = false;
