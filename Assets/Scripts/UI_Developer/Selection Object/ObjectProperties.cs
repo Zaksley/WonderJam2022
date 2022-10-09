@@ -17,6 +17,7 @@ public class ObjectProperties : MonoBehaviour
 
     private float _gravityValue;
     private Collider2D _collider;
+    private PlatformerSimulate _simulate;
     private LineRenderer _line;
     private bool _isActive = true;
 
@@ -38,6 +39,7 @@ public class ObjectProperties : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
+        _simulate = GetComponent<PlatformerSimulate>();
 
         if (UseLineRenderer)
         {
@@ -65,6 +67,7 @@ public class ObjectProperties : MonoBehaviour
     private void SyncUI()
     {
         _colliderToggle.isOn = (_collider.gameObject.layer == _platformLayer);
+        _gravityToggle.isOn = (_simulate.WantedGravityScale < 1.0f);
     }
         
     private void SetColliderEnabled(bool value)
@@ -76,16 +79,6 @@ public class ObjectProperties : MonoBehaviour
     private void ChangeGravityValue(bool value)
     {
         if (IsActive)
-        {
-            
-            if (value)
-            {
-                GetComponent<Rigidbody2D>().gravityScale = -1;
-            }
-            else
-            {
-                GetComponent<Rigidbody2D>().gravityScale = 1;
-            }
-        }
+            _simulate.WantedGravityScale = value ? -1.0f : 1.0f;
     }
 }
