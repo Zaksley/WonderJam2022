@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetSentenceTerminal : MonoBehaviour
 {
     [SerializeField]
-    private string _sentenceId;
+    private List<string> _sentenceListId;
 
     private bool enabled = true;
 
@@ -14,7 +14,7 @@ public class SetSentenceTerminal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,10 @@ public class SetSentenceTerminal : MonoBehaviour
     {
         if (enabled)
         {
-            terminalManagerObject.LogSentence(_sentenceId);
+            for(int indexId = 0; indexId < _sentenceListId.Count; indexId++)
+            {
+                terminalManagerObject.LogSentence(_sentenceListId[indexId]);
+            }
             enabled = false;
         }
 
