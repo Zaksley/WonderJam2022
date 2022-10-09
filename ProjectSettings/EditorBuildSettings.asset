@@ -38,6 +38,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level9.unity
     guid: a25f167ca87ff6746b3d665dea8ec114
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level10.unity
+    guid: dec215d49ff11194089b22745131c44a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level11.unity
+    guid: d7f2ad93f5acfb7448d184ec1e6e7fb9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Scene12.unity
+    guid: 32d2afb2fd02e594d89401ba2a9604e8
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level13.unity
+    guid: ac1b37dea581a4b488507039ef92004b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level14.unity
+    guid: 33087e1669245c34ea744cdb32033e78
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level15.unity
+    guid: 01ff6bfc2e320b748a2a54406f9eff57
   - enabled: 0
     path: Assets/Scenes/EnzoScene.unity
     guid: 6a1584e7bdc7b3c48bbcca24c8f0d52d
