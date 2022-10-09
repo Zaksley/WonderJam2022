@@ -34,7 +34,6 @@ public class BackgroundMover : MonoBehaviour
             float offset = diffObject * distancesX[((i < distancesX.Count) ? i : distancesX.Count)];
             layerSprites[i].position = new Vector3(baseBack.x + offset, layerSprites[i].position.y, i);
         }
-        Debug.Log("Update X");
     }
 
     [ContextMenu("Update OffsetY")]
@@ -46,7 +45,6 @@ public class BackgroundMover : MonoBehaviour
             float offset = diffObject * distancesY[((i < distancesY.Count) ? i : distancesY.Count)];
             layerSprites[i].position = new Vector3(layerSprites[i].position.x, baseBack.y + offset,  i);
         }
-        Debug.Log("Update Y");
     }
 
     // Update is called once per frame
