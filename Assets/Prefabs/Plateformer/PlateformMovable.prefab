@@ -541,5 +541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 0
   collision: 0
-  ShowLineRenderer: 1
+  UseLineRenderer: 1
   _colliderToggle: {fileID: 0}
+  _gravityToggle: {fileID: 0}
