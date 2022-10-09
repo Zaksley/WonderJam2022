@@ -44,7 +44,10 @@ public class PlayerController : MonoBehaviour
     private static readonly int JumpingHash = Animator.StringToHash("jumping");
 
     // Audio
-    private AudioSource _keyPickupSound;
+    private AudioSource _playerAudioSource;
+
+    [SerializeField] private AudioClip _keyPickupClip;
+    [SerializeField] private AudioClip _deathClip;
 
     // Unity events
     
@@ -54,8 +57,7 @@ public class PlayerController : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _deathEffect = GetComponent<ParticleSystem>();
-
-        _keyPickupSound = GetComponent<AudioSource>();
+        _playerAudioSource = GetComponent<AudioSource>();
 
         gameObject.transform.position = _startTransform.position;
     }
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerGotKey()
     {
         HasKey = true;
-        _keyPickupSound.PlayOneShot(_keyPickupSound.clip, 2f);
+        _playerAudioSource.PlayOneShot(_keyPickupClip, 2f);
         GameManager.UpdatePlayerKeyStatus(); 
     }
 
@@ -117,6 +119,7 @@ public class PlayerController : MonoBehaviour
         _isAlive = false; 
         _sprite.enabled = false;
         _deathEffect.Play();
+        _playerAudioSource.PlayOneShot(_deathClip, 2f);
         yield return new WaitForSeconds(_respawnTime);
         HasKey = false;
         GameManager.UpdatePlayerAliveStatus(); 
