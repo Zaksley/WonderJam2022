@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private float _lastHorizontalDirection = 0.0f;
     private float _horizontalDirection = 0.0f;
     private bool _shouldJump = false;
+    private bool _wasSimulated = false;
+    private bool _wasGrounded = false;
     private bool _isGrounded = false;
     private bool _isAlive = true;
 
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
         var simulate = ((GameManager.State == GameManager.PlayerState.PLATEFORMER) && _isAlive);
 
         // Check mode
+        _wasSimulated = _body.simulated;
         _body.simulated = simulate;
         _animator.enabled = simulate;
 
@@ -99,7 +102,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        _wasGrounded = _isGrounded;
         _isGrounded = CheckIfGrounded();
+        
+        if (!_wasGrounded && _isGrounded)
+            StartPlayJump();
     }
 
     private void OnCollisionExit2D(Collision2D other)
