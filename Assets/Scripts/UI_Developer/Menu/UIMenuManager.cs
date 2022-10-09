@@ -15,9 +15,31 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject _creditCanavas;
 
+    [SerializeField]
+    private float speedTransparence;
+
+    private float alphaImage=1;
+    private Color color;
+    bool dissapear = false;
+    
+    private void Start()
+    {
+        color = GetComponent<Color>();
+    }
     private void Update()
     {
-        
+        StartCoroutine(HideDevScreen());
+
+        //alphaImage = alphaImage - speedTransparence;
+       // devScreen.color = new Color(devScreen.color.r, devScreen.color.g, devScreen.color.b, alphaImage); ;
+
+    }
+
+    IEnumerator HideDevScreen()
+    {
+        yield return new WaitForSeconds(2f);
+        devScreen.gameObject.SetActive(false);
+        yield break;
     }
 
     public void PlayGame()
