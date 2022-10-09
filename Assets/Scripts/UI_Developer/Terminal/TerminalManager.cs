@@ -126,17 +126,19 @@ public class TerminalManager : MonoBehaviour
     */
     private void DeleteOldLogs()
     {
-        // for childs
-        // if trop loin
-        // delete child
-        // reduce container size
-        foreach (Transform line in linesContainer.transform)
+        if (linesContainer.transform.childCount > 5)
         {
-            int lineIndex = line.GetSiblingIndex();
-            if (lineIndex > 5)
-            {
-                DestroyImmediate(line);
-            }
+            Transform removedChild = linesContainer.transform.GetChild(5);
+            
+            // reduce lines container size
+            float textSize = removedChild.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
+
+            // Scale scroll rect
+            Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
+            linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y - textSize - 5); // 5 is spacing in vertical layer group
+
+            // Delete log
+            Destroy(removedChild.gameObject);
         }
     }
 
@@ -169,7 +171,7 @@ public class TerminalManager : MonoBehaviour
         // Create a new line
         GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
 
-        // Set child index to respect the console line order
+        // Set child index to respect the console line order, vertical layer is reversed
         // newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
         newLine.transform.SetSiblingIndex(0);
 
@@ -185,6 +187,9 @@ public class TerminalManager : MonoBehaviour
         // Scale new line container                                                                                                                     // Scale text container
         Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
         newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
+
+        // Delete logs no more visible
+        DeleteOldLogs();
     }
 
     public string Red(string text)
