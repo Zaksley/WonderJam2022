@@ -18,11 +18,13 @@ public class TerminalManager : MonoBehaviour
     public GameObject terminalLine;
     public GameObject linesContainer;
 
+    // Writing variables
     private TextMeshProUGUI textContainer;
     private string text;
     private int indexWritten;
     public float TIME_PER_CHAR = 0.05f;
     private float timer;
+    private float oldSize;
     public bool isReady = true;
     private void Update()
     {
@@ -43,7 +45,7 @@ public class TerminalManager : MonoBehaviour
         this.isReady = false;
         this.indexWritten = 0;
         this.timer = 0;
-
+        this.oldSize = 0;
     }
 
 
@@ -61,6 +63,7 @@ public class TerminalManager : MonoBehaviour
                 timer += TIME_PER_CHAR;
                 textContainer.text += text[indexWritten];
                 indexWritten++;
+                UpdateTextHeight();
             }
         }
     }
@@ -85,12 +88,43 @@ public class TerminalManager : MonoBehaviour
     }
 
     /*
+    * Update text offcet when text change height while writing (multiline)
+    */
+    private void UpdateTextHeight()
+    {
+        // Get height of the text and scale scroll rect and text container depending on the content
+        float textSize = textContainer.preferredHeight;
+
+        if (textSize != oldSize)
+        {
+            Transform lineContainer = textContainer.transform.parent;
+            // Scale scroll rect
+            Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
+            linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize - oldSize); // 5 is spacing in vertical layer group
+                                                                                                                                                   // Scale text container
+            Vector2 newLineSize = lineContainer.GetComponent<RectTransform>().sizeDelta;
+            lineContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, newLineSize.y + textSize - oldSize);
+            oldSize = textSize;
+
+            // TODO
+            // DeleteOldLogs();
+        }
+    }
+    /*
     * TODO
     * Delete logs (gameObjects) that are not visible anymore
     */
-    private void DeleteOldLogs()
-    {
-    }
+    // private void DeleteOldLogs()
+    // {
+    //     // for childs
+    //     // if trop loin
+    //     // delete child
+    //     // reduce container size
+    //     foreach (Transform line in linesContainer.transform)
+    //     {
+    //      line.preferredHeight
+    //     }
+    // }
 
     /*
     * Public interface to Log and manage text color
@@ -103,23 +137,22 @@ public class TerminalManager : MonoBehaviour
         GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
 
         // Set child index to respect the console line order
-        newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
+        // newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
+        newLine.transform.SetSiblingIndex(0);
 
         // Set the text
-        newLine.GetComponentInChildren<TextMeshProUGUI>().text = " ";
+        // newLine.GetComponentInChildren<TextMeshProUGUI>().text = AddConsolePrefix(text);
         AddWriter(newLine.GetComponentInChildren<TextMeshProUGUI>(), AddConsolePrefix(text));
 
         // Get height of the text and scale scroll rect and text container depending on the content
         float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
+        oldSize = textSize;
         // Scale scroll rect
         Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
         linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize + 5); // 5 is spacing in vertical layer group
         // Scale text container
         Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
         newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
-
-        // TODO
-        // DeleteOldLogs();
     }
 
     public string Red(string text)
