@@ -14,14 +14,16 @@ public class BackgroundMover : MonoBehaviour
     [SerializeField] Vector2 baseObject;
     [SerializeField] bool moveBack = true;
     Vector2 prevObject;
+    float baseZ;
 
     // Start is called before the first frame update
     void Start()
     {
+        baseZ = transform.position.z;
         for(int i = 0; i < layerSprites.Count; i++)
         {
             Transform t = layerSprites[i];
-            t.position = new Vector3(baseBack.x, baseBack.y, i);
+            t.position = new Vector3(baseBack.x, baseBack.y, baseZ + i);
         }
     }
 
@@ -32,7 +34,7 @@ public class BackgroundMover : MonoBehaviour
         for (int i = 0; i < layerSprites.Count; i++)
         {
             float offset = diffObject * distancesX[((i < distancesX.Count) ? i : distancesX.Count)];
-            layerSprites[i].position = new Vector3(baseBack.x + offset, layerSprites[i].position.y, i);
+            layerSprites[i].position = new Vector3(baseBack.x + offset, layerSprites[i].position.y, baseZ + i);
         }
     }
 
@@ -43,7 +45,7 @@ public class BackgroundMover : MonoBehaviour
         for (int i = 0; i < layerSprites.Count; i++)
         {
             float offset = diffObject * distancesY[((i < distancesY.Count) ? i : distancesY.Count)];
-            layerSprites[i].position = new Vector3(layerSprites[i].position.x, baseBack.y + offset,  i);
+            layerSprites[i].position = new Vector3(layerSprites[i].position.x, baseBack.y + offset, baseZ + i);
         }
     }
 
