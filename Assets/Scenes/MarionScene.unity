@@ -737,6 +737,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _gravityToggle
+      value: 
+      objectReference: {fileID: 1491247627}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
       value: 
       objectReference: {fileID: 1074686444}
@@ -2009,9 +2013,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: gravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _gravityToggle
+      value: 
+      objectReference: {fileID: 1491247627}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
       value: 
@@ -2160,7 +2176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gravity
+  m_Text: Inversed Gravity
 --- !u!222 &1060698226
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2537,8 +2553,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165742422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.41, y: -2.6795, z: -5.82}
-  m_LocalScale: {x: 4.5074806, y: 4.473118, z: 1}
+  m_LocalPosition: {x: 8.28, y: -2.2, z: -5.82}
+  m_LocalScale: {x: 11.922937, y: 7.7626486, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3038,6 +3054,14 @@ PrefabInstance:
       propertyPath: gravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: collision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
+      propertyPath: _gravityToggle
+      value: 
+      objectReference: {fileID: 1491247627}
     - target: {fileID: 333493688261949924, guid: 88cd23a618102ad47ab908b357208991, type: 3}
       propertyPath: _colliderToggle
       value: 
