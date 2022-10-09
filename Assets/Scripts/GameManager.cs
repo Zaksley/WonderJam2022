@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     };
 
     public static PlayerState State { get; private set; }
+    
     [SerializeField] private List<GameObject> _objectsUI = new List<GameObject>();
+    [SerializeField] private Texture2D _spriteCursor;
 
-    [SerializeField] private Texture2D _spriteCursor; 
+    [SerializeField] private AudioClip _devClip;
+    [SerializeField] private AudioClip _platformerClip;
+    private AudioSource _audioSource;
     
     public static event EventHandler OnPlayerGotKey;
     public static event EventHandler OnPlayerDie;
@@ -23,6 +27,9 @@ public class GameManager : MonoBehaviour
         State = PlayerState.PLATEFORMER;
         Cursor.SetCursor(_spriteCursor, Vector2.zero, CursorMode.Auto);
         EnableUI(false);
+        
+        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource.loop = false;
     }
     
     void Update()
@@ -31,8 +38,9 @@ public class GameManager : MonoBehaviour
         {
             SwitchMode();
 
-            bool IsPlayerInDevMode = State == PlayerState.DEVELOPER;
-            EnableUI(IsPlayerInDevMode);
+            var isPlayerInDevMode = State == PlayerState.DEVELOPER;
+            EnableUI(isPlayerInDevMode);
+            _audioSource.PlayOneShot(isPlayerInDevMode ? _devClip : _platformerClip, 2.0f);
         }
     }
 
