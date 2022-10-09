@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        State = PlayerState.DEVELOPER; 
+        State = PlayerState.PLATEFORMER;
         Cursor.SetCursor(_spriteCursor, Vector2.zero, CursorMode.Auto);
+        EnableUI(false);
     }
     
     void Update()
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
 
             bool IsPlayerInDevMode = State == PlayerState.DEVELOPER;
             EnableUI(IsPlayerInDevMode);
-            Cursor.visible = IsPlayerInDevMode;
         }
     }
 
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             _objectsUI[indexUI].SetActive(State);
         }
+        
+        Cursor.visible = State;
     }
     
     private void SwitchMode()
