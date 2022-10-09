@@ -23,36 +23,42 @@ public class TerminalManager : MonoBehaviour
     private float oldSize;
     public bool isWriting = false;
 
+    public bool enablingTutorial = true;
+
     int a = 0;
     private List<string> aa = new List<string>();
 
     private void Start()
     {
-        aa.Add("aaaaaaaaaaaaaa");
-        aa.Add("bbbbbbbbbbbbb");
-        aa.Add("ccccccccccccc");
-        aa.Add("dddddddddddd");
+        if (enablingTutorial)
+        {
+            LogSentence("s11");
+        }
     }
+
+
+
     private void Update()
     {
         // always check if text must be written
         Write();
 
-        // This is how you can use the terminal
-        // TODO : size of text and terminal must be setup in the main scene
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown("e"))
         {
-            // this.Log($"{textColorizer.Red("ENZO")}HELLO WORLD");
-            this.Log(aa[a]);
-            a++;
-            if (a == 4) {
-                a = 0;
-            }
-        }
-
-        if (Input.GetKeyDown("e")) {
             WriteAll();
         }
+
+        // DEBUG
+        // if (Input.GetKeyDown(KeyCode.Return))
+        // {
+        //     // this.Log($"{textColorizer.Red("ENZO")}HELLO WORLD");
+        //     this.Log(aa[a]);
+        //     a++;
+        //     if (a == 4) {
+        //         a = 0;
+        //     }
+        // }
+
     }
 
     /*

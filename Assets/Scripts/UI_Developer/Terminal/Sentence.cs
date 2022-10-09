@@ -8,7 +8,6 @@ public class Sentence
     {
         sentences = new System.Collections.Generic.Dictionary<string, string>()
     {
-        // TODO complete this
         // Id is based on (type)[level-order][part]
         // Level 0
         {"01", SystemWarning("Anomaly detected in the system-world. Closing procedure initiated...")},
