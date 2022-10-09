@@ -49,7 +49,7 @@ public class Sentence
         string hourInfo = System.DateTime.Now.ToString("[hh:mm]");
         return $"{textColorizer.Yellow(hourInfo)} C:\\Users\\Poutine> {text}";
     }
-    
+
     private string AddPlayerPrefix(string text)
     {
         return $"{textColorizer.Yellow("[Poutine]")} {text}";

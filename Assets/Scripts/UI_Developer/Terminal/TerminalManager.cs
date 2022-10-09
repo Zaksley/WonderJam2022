@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
 
 public class TerminalManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class TerminalManager : MonoBehaviour
 
     // Writing variables
     private TextMeshProUGUI textContainer;
+    private List<string> pendingText = new List<string>();
     private string text;
     private int indexWritten;
     public float TIME_PER_CHAR = 0.05f;
@@ -21,6 +23,16 @@ public class TerminalManager : MonoBehaviour
     private float oldSize;
     public bool isWriting = false;
 
+    int a = 0;
+    private List<string> aa = new List<string>();
+
+    private void Start()
+    {
+        aa.Add("aaaaaaaaaaaaaa");
+        aa.Add("bbbbbbbbbbbbb");
+        aa.Add("ccccccccccccc");
+        aa.Add("dddddddddddd");
+    }
     private void Update()
     {
         // always check if text must be written
@@ -30,14 +42,16 @@ public class TerminalManager : MonoBehaviour
         // TODO : size of text and terminal must be setup in the main scene
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (!isWriting)
-            {
-                this.LogSentence("01");
+            // this.Log($"{textColorizer.Red("ENZO")}HELLO WORLD");
+            this.Log(aa[a]);
+            a++;
+            if (a == 4) {
+                a = 0;
             }
-            else
-            {
-                WriteAll();
-            }
+        }
+
+        if (Input.GetKeyDown("a")) {
+            WriteAll();
         }
     }
 
@@ -65,6 +79,12 @@ public class TerminalManager : MonoBehaviour
             if (indexWritten >= text.Length)
             {
                 isWriting = false;
+                // check if there is more pending text
+                if (pendingText.Count > 0)
+                {
+                    Log(pendingText[0]);
+                    pendingText.RemoveAt(0);
+                }
                 return;
             }
 
@@ -87,9 +107,14 @@ public class TerminalManager : MonoBehaviour
     {
         if (isWriting)
         {
-            textContainer.text = text;
             isWriting = false;
+            textContainer.text = text;
             UpdateTextHeight();
+            if (pendingText.Count > 0)
+            {
+                Log(pendingText[0]);
+                pendingText.RemoveAt(0);
+            }
         }
     }
 
@@ -136,15 +161,7 @@ public class TerminalManager : MonoBehaviour
         }
     }
 
-    /*
-       * Add console prefix : hour + C:\User...
-       * Hour is based on the real user hour
-       */
-    private string AddConsolePrefix(string text)
-    {
-        string hourInfo = System.DateTime.Now.ToString("[hh:mm]");
-        return $"{textColorizer.Yellow(hourInfo)} C:\\Users\\Poutine> {text}";
-    }
+
 
     /*
     * Public interface to Log
@@ -157,26 +174,34 @@ public class TerminalManager : MonoBehaviour
 
     public void Log(string text)
     {
-        // Create a new line
-        GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
+        if (isWriting)
+        {
+            pendingText.Add(text);
+        }
+        else
+        {
+            // Create a new line
+            GameObject newLine = Instantiate(terminalLine, linesContainer.transform);
 
-        // Set child index to respect the console line order, vertical layer is reversed
-        newLine.transform.SetSiblingIndex(0);
+            // Set child index to respect the console line order, vertical layer is reversed
+            // newLine.transform.SetSiblingIndex(linesContainer.transform.childCount - 1);
+            newLine.transform.SetSiblingIndex(0);
 
-        // Add writer to the textContainer
-        AddWriter(newLine.GetComponentInChildren<TextMeshProUGUI>(), AddConsolePrefix(text));
+            // Add writer to the textContainer
+            AddWriter(newLine.GetComponentInChildren<TextMeshProUGUI>(), text);
 
-        // Get height of the text and scale scroll rect and new line container depending on the content
-        float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
-        oldSize = textSize;
-        // Scale scroll rect
-        Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
-        linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize + 5); // 5 is spacing in vertical layer group
-        // Scale new line container                                                                                                                     // Scale text container
-        Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
-        newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
+            // Get height of the text and scale scroll rect and new line container depending on the content
+            float textSize = newLine.GetComponentInChildren<TextMeshProUGUI>().preferredHeight;
+            oldSize = textSize;
+            // Scale scroll rect
+            Vector2 linesContainerSize = linesContainer.GetComponent<RectTransform>().sizeDelta;
+            linesContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(linesContainerSize.x, linesContainerSize.y + textSize + 5); // 5 is spacing in vertical layer group
+                                                                                                                                             // Scale new line container                                                                                                                     // Scale text container
+            Vector2 newLineSize = newLine.GetComponent<RectTransform>().sizeDelta;
+            newLine.GetComponent<RectTransform>().sizeDelta = new Vector2(newLineSize.x, textSize);
 
-        // Delete logs no more visible
-        DeleteOldLogs();
+            // Delete logs no more visible
+            DeleteOldLogs();
+        }
     }
 }
