@@ -6,6 +6,7 @@ public class GlitchEffect : MonoBehaviour
 {
     [Range(0.01f, 5f)] public float intensity = 1;
     public bool doGlitch = false;
+    public bool doColor = false;
     bool glitchRunning = false;
     [Space]
     [SerializeField] List<Options> options_;
@@ -64,16 +65,19 @@ public class GlitchEffect : MonoBehaviour
 
     void ColorSwitch(bool reset = false)
     {
-        Color color_;
-        if(reset)
+        if(doColor)
         {
-            color_ = Color.white;
+            Color color_;
+            if (reset)
+            {
+                color_ = Color.white;
+            }
+            else
+            {
+                color_ = RandomBool() ? Color.white : (RandomBool() ? redGlitch : blueGlitch);
+            }
+            render.color = color_;
         }
-        else
-        {
-            color_ = RandomBool() ? Color.white : (RandomBool() ? redGlitch : blueGlitch);
-        }
-        render.color = color_;
     }
 
     bool RandomBool()
@@ -123,7 +127,7 @@ public class GlitchEffect : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             int index = Random.Range(0, glitchedTextures.Count);
-            OffsetSet((intensity+1)/10);
+            OffsetSet(Random.Range(.5f,(intensity+1)/10));
             ColorSwitch();
             yield return new WaitForSeconds(.1f);
             transform.position = initialPos;
