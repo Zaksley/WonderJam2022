@@ -62,11 +62,15 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        var simulate = ((GameManager.State == GameManager.PlayerState.PLATEFORMER) && _isAlive);
+        
         // Check mode
-        _body.simulated = ((GameManager.State == GameManager.PlayerState.PLATEFORMER) && _isAlive);
+        _body.simulated = simulate;
+        _animator.enabled = simulate;
 
         // Input
         ProcessInputs();
+
         // Animations
         Animate();
     }
