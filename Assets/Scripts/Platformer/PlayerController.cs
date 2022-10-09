@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _raycastOrigin;
     [SerializeField] private float _raycastLength = 1.0f;
 
-    
+
     [SerializeField] private Transform _startTransform;
     [SerializeField] private float _respawnTime = 1.0f;
 
@@ -30,14 +31,14 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _sprite;
     private Animator _animator;
     private ParticleSystem _deathEffect;
-    
+
     // Fields
     private float _lastHorizontalDirection = 0.0f;
     private float _horizontalDirection = 0.0f;
     private bool _shouldJump = false;
     private bool _isGrounded = false;
-    private bool _isAlive = true; 
-    
+    private bool _isAlive = true;
+
     // Cache
     private static readonly int HorizontalVelocityHash = Animator.StringToHash("horizontalVelocity");
     private static readonly int VerticalVelocityHash = Animator.StringToHash("verticalVelocity");
@@ -45,12 +46,15 @@ public class PlayerController : MonoBehaviour
 
     // Audio
     private AudioSource _playerAudioSource;
+    private AudioSource _walkAudioSource;
 
     [SerializeField] private AudioClip _keyPickupClip;
     [SerializeField] private AudioClip _deathClip;
+    [SerializeField] private AudioClip _walkClip;
+    [SerializeField] private AudioClip _jumpClip;
 
     // Unity events
-    
+
     private void Start()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -59,13 +63,17 @@ public class PlayerController : MonoBehaviour
         _deathEffect = GetComponent<ParticleSystem>();
         _playerAudioSource = GetComponent<AudioSource>();
 
+        _walkAudioSource = gameObject.AddComponent<AudioSource>();
+        _walkAudioSource.loop = true;
+        _walkAudioSource.clip = _walkClip;
+
         gameObject.transform.position = _startTransform.position;
     }
-    
+
     private void Update()
     {
         var simulate = ((GameManager.State == GameManager.PlayerState.PLATEFORMER) && _isAlive);
-        
+
         // Check mode
         _body.simulated = simulate;
         _animator.enabled = simulate;
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         HasKey = true;
         _playerAudioSource.PlayOneShot(_keyPickupClip, 2f);
-        GameManager.UpdatePlayerKeyStatus(); 
+        GameManager.UpdatePlayerKeyStatus();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -98,7 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         _isGrounded = false;
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(_raycastOrigin.position, new Vector3(0.0f, -_raycastLength, 0.0f));
@@ -116,48 +124,49 @@ public class PlayerController : MonoBehaviour
     // Wait for respawn time and set object active at start position
     private IEnumerator WaitAndRespawn()
     {
-        _isAlive = false; 
+        _isAlive = false;
         _sprite.enabled = false;
         _deathEffect.Play();
         _playerAudioSource.PlayOneShot(_deathClip, 2f);
         yield return new WaitForSeconds(_respawnTime);
         HasKey = false;
-        GameManager.UpdatePlayerAliveStatus(); 
+        GameManager.UpdatePlayerAliveStatus();
         gameObject.transform.position = _startTransform.position;
-        _isAlive = true; 
+        _isAlive = true;
         _sprite.enabled = true;
         Debug.Log("Player finished dying");
     }
-    
+
     // Move the rigidbody of the player according to inputs
     private void MovePlayer()
     {
         // Horizontal movement
         // Check if we start moving (accelerating) or stop moving (decelerating)
-        var deltaAcceleration = Mathf.Abs(_horizontalDirection) > 0.0f ? _acceleration : _deceleration; 
+        var deltaAcceleration = Mathf.Abs(_horizontalDirection) > 0.0f ? _acceleration : _deceleration;
 
         var horizontalVelocity = Mathf.Lerp(
-            _body.velocity.x, 
+            _body.velocity.x,
             _horizontalDirection * _moveSpeed * Time.fixedDeltaTime,
             deltaAcceleration * Time.fixedDeltaTime);
-        
+
         // Vertical jump
-        var verticalVelocity = _shouldJump ? _jumpSpeed : _body.velocity.y;  
-        
+        var verticalVelocity = _shouldJump ? _jumpSpeed : _body.velocity.y;
+
         // Final velocity
         _body.velocity = new Vector2(horizontalVelocity, verticalVelocity);
-        
+
         // We have jump now
         _shouldJump = false;
     }
-    
+
     // Raycast down to check for a collider, if a collider was hit, we are grounded
     private bool CheckIfGrounded()
     {
-        var result = Physics2D.Raycast(_raycastOrigin.position, new Vector2 (0.0f, -1.0f), _raycastLength, ~LayerMask.NameToLayer("Platform"));
+        var result = Physics2D.Raycast(_raycastOrigin.position, new Vector2(0.0f, -1.0f), _raycastLength,
+            ~LayerMask.NameToLayer("Platform"));
         return result.collider != null;
     }
-    
+
     // Update variables from inputs
     private void ProcessInputs()
     {
@@ -165,11 +174,11 @@ public class PlayerController : MonoBehaviour
             _lastHorizontalDirection = _horizontalDirection;
 
         _horizontalDirection = Input.GetAxisRaw("Horizontal");
-        
+
         if (!_shouldJump && _isGrounded)
             _shouldJump = Input.GetButtonDown("Jump");
     }
-    
+
     // Animate the player
     private void Animate()
     {
@@ -177,5 +186,20 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat(VerticalVelocityHash, _body.velocity.y);
         _animator.SetBool(JumpingHash, !_isGrounded);
         _sprite.flipX = _lastHorizontalDirection < 0.5f; // _body.velocity.x < 0.0f;
+    }
+
+    private void StartPlayWalk()
+    {
+        _walkAudioSource.Play();
+    }
+
+    private void StopPlayWalk()
+    {
+        _walkAudioSource.Stop();
+    }
+
+    private void StartPlayJump()
+    {
+        _playerAudioSource.PlayOneShot(_jumpClip, 2.0f);
     }
 }
