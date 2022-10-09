@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _platformerClip;
     [SerializeField] private AudioClip _clickClip;
 
+    [SerializeField] private float _devCameraSizeOffset = 3.0f;
+
     private AudioSource _audioSource;
     
     public static event EventHandler OnPlayerGotKey;
@@ -43,10 +45,15 @@ public class GameManager : MonoBehaviour
             var isPlayerInDevMode = State == PlayerState.DEVELOPER;
             EnableUI(isPlayerInDevMode);
             _audioSource.PlayOneShot(isPlayerInDevMode ? _devClip : _platformerClip, 2.0f);
+
+            if (isPlayerInDevMode)
+                Camera.main.orthographicSize += _devCameraSizeOffset;
+            else
+                Camera.main.orthographicSize -= _devCameraSizeOffset;
         }
         
         if (Input.GetMouseButtonDown(0) && State == PlayerState.DEVELOPER)
-            _audioSource.PlayOneShot(_clickClip, 2.0f);
+            _audioSource.PlayOneShot(_clickClip, 0.5f);
     }
 
     public static void UpdatePlayerKeyStatus()
