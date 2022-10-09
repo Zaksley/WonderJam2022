@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
     
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("Level0.5");
+    }
     //public void CutSound()
     //{
     //    AudioGeneral.;
