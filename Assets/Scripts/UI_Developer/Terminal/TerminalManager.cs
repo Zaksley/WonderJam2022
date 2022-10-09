@@ -23,22 +23,28 @@ public class TerminalManager : MonoBehaviour
     private float oldSize;
     public bool isWriting = false;
 
+    public bool enablingTutorial = true;
+
     int a = 0;
     private List<string> aa = new List<string>();
 
     private void Start()
     {
-        aa.Add("aaaaaaaaaaaaaa");
-        aa.Add("bbbbbbbbbbbbb");
-        aa.Add("ccccccccccccc");
-        aa.Add("dddddddddddd");
+        if (enablingTutorial)
+        {
+            LogSentence("00");
+        }
     }
+
+
+
     private void Update()
     {
         // always check if text must be written
         Write();
-        
-        if (Input.GetKeyDown("e")) {
+
+        if (Input.GetKeyDown("e"))
+        {
             WriteAll();
         }
 
