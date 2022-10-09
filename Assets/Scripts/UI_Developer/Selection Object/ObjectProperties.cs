@@ -5,15 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(LineRenderer))]
 public class ObjectProperties : MonoBehaviour
 {
 
     public bool gravity;
     public bool collision;
-
-
-
+    public bool UseLineRenderer; 
     
     [SerializeField] private Toggle _colliderToggle;
     [SerializeField] private Toggle _gravityToggle;
@@ -41,12 +38,15 @@ public class ObjectProperties : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
-        _line = GetComponent<LineRenderer>();
+
+        if (UseLineRenderer)
+        {
+            _line = GetComponent<LineRenderer>();
+        }
         
         _platformLayer = LayerMask.NameToLayer("Platform");
         _withoutPlayerLayer = LayerMask.NameToLayer("WithoutPlayer");
-
-        SyncUI();
+        
         _colliderToggle.onValueChanged.AddListener(SetColliderEnabled);
         _gravityToggle.onValueChanged.AddListener(ChangeGravityValue);
 
@@ -55,7 +55,11 @@ public class ObjectProperties : MonoBehaviour
     private void Update()
     {
         IsActive = (gameObject == GlobalVariable.ObjectSelected);
-        _line.enabled = IsActive;
+        
+        if (UseLineRenderer)
+        {
+            _line.enabled = IsActive;
+        }
     }
 
     private void SyncUI()
