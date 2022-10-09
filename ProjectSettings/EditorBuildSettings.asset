@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PJScene.unity
     guid: e535863bacd8b3d43aa47cd0fb2b4587
+  - enabled: 1
+    path: Assets/Scenes/Levels/Menu.unity
+    guid: b8f5c89c12be9e44eaf2ff889926a3ff
   m_configObjects: {}
