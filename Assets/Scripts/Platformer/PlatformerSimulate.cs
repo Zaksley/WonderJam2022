@@ -17,8 +17,7 @@ public class PlatformerSimulate : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.State == GameManager.PlayerState.DEVELOPER)
-            _rigidbody.gravityScale = 0.0f;
+        _rigidbody.simulated = (GameManager.State == GameManager.PlayerState.PLATEFORMER);
 
         if (GameManager.State != _lastState && _lastState == GameManager.PlayerState.DEVELOPER)
             _rigidbody.gravityScale = WantedGravityScale;
