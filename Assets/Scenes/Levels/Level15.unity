@@ -3123,7 +3123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8330505248654730957, guid: 4d0be6c453e6ca544b991a5539d3745d, type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 8330505248654730959, guid: 4d0be6c453e6ca544b991a5539d3745d, type: 3}
       propertyPath: target
