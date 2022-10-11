@@ -47,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Gate
+    uniqueID: 3573547643
+    locked: 0
   - name: Player
     uniqueID: 3813775289
     locked: 0

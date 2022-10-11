@@ -1653,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 293246693}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2352821419527003186, guid: 18ee1c3d8de640340844c1a0969bfe8a, type: 3}
       propertyPath: _sentenceListId.Array.data[0]
