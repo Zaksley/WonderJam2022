@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         _body.simulated = simulate;
         _animator.enabled = simulate;
 
-        if (!simulate)
+        if (!simulate || UIManager.StateMenuInGame)
         {
             _walkAudioSource.Stop();
             return;
