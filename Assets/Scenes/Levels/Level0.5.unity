@@ -288,11 +288,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191bed7a1b10fda428397d2115f70d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePerChar: 0.05
+  tutorialDisplayed: 0
+  tutorialAnimation: 0
+  maxLineDisplayed: 19
+  verticalSpacing: 5
   terminalLine: {fileID: 51267440684422976, guid: be16684c263f10d49acd303db9ca9edc, type: 3}
   linesContainer: {fileID: 1469164294}
-  TIME_PER_CHAR: 0.03
-  isWriting: 0
-  enablingTutorial: 0
 --- !u!114 &83699637
 MonoBehaviour:
   m_ObjectHideFlags: 0

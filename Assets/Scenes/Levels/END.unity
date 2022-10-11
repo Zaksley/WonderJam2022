@@ -520,11 +520,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191bed7a1b10fda428397d2115f70d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timePerChar: 0.05
+  tutorialDisplayed: 0
+  tutorialAnimation: 0
+  maxLineDisplayed: 19
+  verticalSpacing: 5
   terminalLine: {fileID: 1111799024041612299, guid: f4016949723a08744974e136066e9c0e, type: 3}
   linesContainer: {fileID: 7204753327952124418}
-  TIME_PER_CHAR: 0.05
-  isWriting: 0
-  enablingTutorial: 0
 --- !u!224 &425499078 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1111799024402340506, guid: f4016949723a08744974e136066e9c0e, type: 3}

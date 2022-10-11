@@ -14,7 +14,7 @@ public class TerminalManager : MonoBehaviour
     [SerializeField]
     private bool tutorialDisplayed = true;
     [SerializeField]
-    private bool tutorialAnimation = true;
+    private bool tutorialAnimation = false;
     [SerializeField]
     private int maxLineDisplayed = 19;
     // Spacing in vertical layer group, used to keep line at the same height
