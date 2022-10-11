@@ -3090,7 +3090,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1127886509}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &926593484
 TilemapCollider2D:
@@ -3148,7 +3148,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3847,7 +3847,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1127886509}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &977598806
 TilemapRenderer:
@@ -3887,9 +3887,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1386191297
-  m_SortingLayer: -1
-  m_SortingOrder: 10
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3983,23 +3983,23 @@ Tilemap:
     m_Data:
       e00: 0
       e01: 0
-      e02: 2.1006438e-19
-      e03: 2.1006438e-19
+      e02: -3.0700943e+29
+      e03: -3.0700943e+29
       e10: 0
       e11: 0
-      e12: 8.13e-43
-      e13: 8.13e-43
-      e20: -4.314348e-29
+      e12: 5.79e-43
+      e13: 5.79e-43
+      e20: 1.0216127e-18
       e21: 1e-45
-      e22: -2.3560854e-19
-      e23: -3.727777e+19
-      e30: 4.5904e-41
+      e22: 0.0000000013446462
+      e23: 1.6044652e+29
+      e30: 4.5905e-41
       e31: 0
-      e32: 8.13e-43
-      e33: 8.16e-43
+      e32: 5.8e-43
+      e33: 5.83e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.512e-41, g: 3.512e-41, b: 3.512e-41, a: 3.512e-41}
+    m_Data: {r: 3.8637e-41, g: 3.8637e-41, b: 3.8637e-41, a: 3.8637e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4238,8 +4238,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 977598805}
   - {fileID: 926593483}
+  - {fileID: 977598805}
   m_Father: {fileID: 508619541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

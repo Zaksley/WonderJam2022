@@ -41,6 +41,9 @@ TagManager:
   - name: Background
     uniqueID: 1386191297
     locked: 0
+  - name: ScreenLayer
+    uniqueID: 1551534221
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
