@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
         _body.simulated = simulate;
         _animator.enabled = simulate;
 
+        if (!simulate)
+        {
+            _walkAudioSource.Stop();
+            return;
+        }
+
         // Input
         ProcessInputs();
 
