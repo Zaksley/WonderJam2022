@@ -1468,7 +1468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1458571973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Marion Trassaert \nHugo Langlais\nPerigo Herau \nCome Serlooten\nPierre-Jean
+  m_text: "Marion Trassaert \nHugo Langlais\nL\xE9na Herau \nCome Serlooten\nPierre-Jean
     Morel\nEnzo Medina"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0dd6266b55528ea48a1b021bd2f77a53, type: 2}
