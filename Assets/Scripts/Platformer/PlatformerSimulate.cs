@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+
 public class PlatformerSimulate : MonoBehaviour
 {
     public float WantedGravityScale { get; set; }
+    private Vector2 _storeVelocity = Vector2.zero; 
     
     private Rigidbody2D _rigidbody;
     private GameManager.PlayerState _lastState;
@@ -17,11 +18,27 @@ public class PlatformerSimulate : MonoBehaviour
 
     private void Update()
     {
-        _rigidbody.simulated = (GameManager.State == GameManager.PlayerState.PLATEFORMER);
-
-        if (GameManager.State != _lastState && _lastState == GameManager.PlayerState.DEVELOPER)
-            _rigidbody.gravityScale = WantedGravityScale;
+        _rigidbody.isKinematic = (GameManager.State == GameManager.PlayerState.DEVELOPER);
+        
+        if (GameManager.State != _lastState)
+        {
+            if (_lastState == GameManager.PlayerState.PLATEFORMER)
+            {
+                StorePreviousParameters();
+                _rigidbody.velocity = Vector2.zero;
+            }
+            else if (_lastState == GameManager.PlayerState.DEVELOPER)
+            {
+                _rigidbody.gravityScale = WantedGravityScale;
+                _rigidbody.velocity = _storeVelocity;  
+            }
+        }
 
         _lastState = GameManager.State;
+    }
+
+    private void StorePreviousParameters()
+    {
+        _storeVelocity = _rigidbody.velocity; 
     }
 }
