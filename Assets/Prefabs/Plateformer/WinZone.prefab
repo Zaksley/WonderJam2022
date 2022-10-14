@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2071488743818784235}
   - component: {fileID: 304444191804286263}
   - component: {fileID: 4447214797966331553}
+  - component: {fileID: 4224184289116561492}
   m_Layer: 0
   m_Name: WinZone
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteStartLevel: {fileID: -1189508971, guid: 2107f599cc05f324da6ed767f2e7bc46, type: 3}
   _spriteEndLevel: {fileID: 21300000, guid: 7f791ea6b9e26f0409331457132c1c5a, type: 3}
+  floatingDisk: {fileID: 4224184289116561492}
 --- !u!212 &304444191804286263
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -247,3 +249,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4224184289116561492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525377086739545548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fcedf790faa544a9296dca1b85a33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatFrequency: 0.4
+  floatAmplitude: 0.4
+  invertDirection: 0
+  doorFrame: {fileID: 2798665989733007350}
+  run: 0

@@ -14,27 +14,51 @@ public class WinZoneController : MonoBehaviour
     // Sprite
     [SerializeField] private Sprite _spriteStartLevel;
     [SerializeField] private Sprite _spriteEndLevel;
-    private float _timeJumpNextScene = 0.5f; 
-    
+    private float _timeJumpNextScene = 0.5f;
+    [Space]
+    [SerializeField] FloaterDoor floatingDisk;
+    Vector2 initialPos;
+    Vector2 initialDoorPos;
+
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>(); 
 
         GameManager.OnPlayerGotKey += UpdateSprite; 
-        GameManager.OnPlayerDie += RestartSprite; 
+        GameManager.OnPlayerDie += RestartSprite;
+        initialPos = transform.position;
+        initialDoorPos = floatingDisk.doorFrame.position;
+    }
+
+    [ContextMenu("Float Toggle")]
+    void ToggleFloater()
+    {
+        SetFloater(!floatingDisk.run);
+        
+    }
+
+    void SetFloater(bool state)
+    {
+        floatingDisk.run = state;
+        transform.position = initialPos;
+        floatingDisk.doorFrame.position = initialDoorPos;
     }
 
     private void UpdateSprite(object sender, EventArgs args)
     {
         _animator.SetTrigger("GotKey");
-        _spriteRenderer.sprite = _spriteEndLevel; 
+        _spriteRenderer.sprite = _spriteEndLevel;
+        SetFloater(true);
     }
+
+
     
     private void RestartSprite(object sender, EventArgs args)
     {
         _animator.Play("WinCorrupted");
-        _spriteRenderer.sprite = _spriteStartLevel; 
+        _spriteRenderer.sprite = _spriteStartLevel;
+        SetFloater(false);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
