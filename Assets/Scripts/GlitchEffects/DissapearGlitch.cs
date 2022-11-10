@@ -7,6 +7,8 @@ public class DissapearGlitch : MonoBehaviour
 {
     [SerializeField] Transform targetObject;
 
+    [SerializeField] [Range(0f, 2f)] float amplitude = 1;
+
     public bool triggerOnce = false;
     public bool triggered = false;
 
@@ -50,7 +52,7 @@ public class DissapearGlitch : MonoBehaviour
     {
         if (dissapearAtEnd) DisableTargetColliders();
 
-        Vector3 initialPos = targetObject.position;
+        Vector3 initialPos = targetObject.localPosition;
 
         int dir = 1;
         float delay = .1f;
@@ -58,7 +60,7 @@ public class DissapearGlitch : MonoBehaviour
 
         for (int i = 0; i < 15; i++)
         {
-            targetObject.position = initialPos + (Vector3.right * offset * dir);
+            targetObject.localPosition = initialPos + (Vector3.right * offset * dir * amplitude);
             
             yield return new WaitForSeconds(delay);
 
@@ -74,7 +76,7 @@ public class DissapearGlitch : MonoBehaviour
             onDissapear.Invoke();
         }
         
-        targetObject.position = initialPos;
+        targetObject.localPosition = initialPos;
         triggered = true;
 
         yield break;

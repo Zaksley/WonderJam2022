@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlitchEffect : MonoBehaviour
 {
-    [Range(0.01f, 5f)] public float intensity = 1;
+    [Range(0.01f, 10f)] public float intensity = 1;
     public bool doGlitch = false;
     public bool doColor = false;
     bool glitchRunning = false;
@@ -34,7 +34,7 @@ public class GlitchEffect : MonoBehaviour
 
     IEnumerator Glitch()
     {
-        Debug.Log("GlitchStart");
+        //Debug.Log("GlitchStart");
         glitchRunning = true;
         while(doGlitch)
         {
@@ -43,7 +43,7 @@ public class GlitchEffect : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(.5f, 1+ 5f/intensity));
         }
         glitchRunning = false;
-        Debug.Log("GlitchEnd");
+        //Debug.Log("GlitchEnd");
         yield break;
     }
 
