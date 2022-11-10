@@ -40,7 +40,7 @@ public class GlitchEffect : MonoBehaviour
         {
             Sprite texture = render.sprite;
             DoEffect(options_[Random.Range(0,options_.Count)]);
-            yield return new WaitForSeconds(Random.Range(1f, 1+ 5/intensity));
+            yield return new WaitForSeconds(Random.Range(.5f, 1+ 5f/intensity));
         }
         glitchRunning = false;
         Debug.Log("GlitchEnd");
@@ -89,7 +89,7 @@ public class GlitchEffect : MonoBehaviour
 
     IEnumerator Flicker(int maxAmount)
     {
-        Debug.Log("GlitchFlicker");
+        //Debug.Log("GlitchFlicker");
         int amount = Random.Range(1, maxAmount + 1);
         Sprite texture = render.sprite;
         for(int i = 0; i < amount; i++)
@@ -118,10 +118,11 @@ public class GlitchEffect : MonoBehaviour
 
     IEnumerator Shake(int maxAmount)
     {
-        Debug.Log("GlitchShake");
+        //Debug.Log("GlitchShake");
         int amount = Random.Range(1, maxAmount + 2);
 
-        Vector2 collPos = coll.offset;
+        Vector2 collPos = (coll)? coll.offset : Vector2.zero;
+
         Vector3 initialPos = transform.position;
 
         for (int i = 0; i < amount; i++)
@@ -131,11 +132,11 @@ public class GlitchEffect : MonoBehaviour
             ColorSwitch();
             yield return new WaitForSeconds(.1f);
             transform.position = initialPos;
-            coll.offset = collPos;
+            if(coll) coll.offset = collPos;
             ColorSwitch(true);
             yield return new WaitForSeconds(.1f);
         }
-        coll.offset = collPos;
+        if(coll) coll.offset = collPos;
         transform.position = initialPos;
 
         yield break;
@@ -143,10 +144,10 @@ public class GlitchEffect : MonoBehaviour
 
     void OffsetSet(float val)
     {
-        Vector2 collPos = coll.offset;
+        Vector2 collPos = (coll)? coll.offset : Vector2.zero;
         int xFactor = Random.Range(0, 3) - 1;
         int yFactor = Random.Range(0, 3) - 1;
-        coll.offset = collPos - (new Vector2(xFactor * val / 2, yFactor * val / 2));
+        if(coll) coll.offset = collPos - (new Vector2(xFactor * val / 2, yFactor * val / 2));
         transform.position = new Vector3(transform.position.x + xFactor * val /2, transform.position.y + yFactor * val/2, transform.position.z);
     }
 

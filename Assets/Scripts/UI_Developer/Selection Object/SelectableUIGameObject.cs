@@ -35,23 +35,32 @@ public class SelectableUIGameObject : MonoBehaviour
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.transform != null)
             {
-                if(rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
+                if(GlobalVariable.ObjectSelected)
                 {
-                    foreach (GameObject obj in GlobalVariable.listChildrenGameObject)
+                    if (rayHit.transform.gameObject != GlobalVariable.ObjectSelected.gameObject)
                     {
-                        if (rayHit.transform.gameObject == obj)
+                        foreach (GameObject obj in GlobalVariable.listChildrenGameObject)
                         {
-                            _clickOnChildren = true;
+                            if (rayHit.transform.gameObject == obj)
+                            {
+                                _clickOnChildren = true;
 
+                            }
+                        }
+                        Debug.Log(_clickOnChildren);
+                        if (!_clickOnChildren)
+                        {
+                            UnSelectGameObject();
+                            UnSelectButton();
                         }
                     }
-                    Debug.Log(_clickOnChildren);
-                    if (!_clickOnChildren)
-                    {
-                        UnSelectGameObject();
-                        UnSelectButton();
-                    }
                 }
+                else
+                {
+                    UnSelectGameObject();
+                    UnSelectButton();
+                }
+                
             }
             else
             {

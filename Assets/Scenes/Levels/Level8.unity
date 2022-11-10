@@ -885,6 +885,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a6998b1d7a0fbc4695140683dc75311, type: 3}
+--- !u!1 &275690949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7614452252515892474, guid: 9a6998b1d7a0fbc4695140683dc75311, type: 3}
+  m_PrefabInstance: {fileID: 275690948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &275690950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275690949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6186a94129725418cc1362a8973019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 1
+  doGlitch: 1
+  doColor: 1
+  options_: 000000000100000001000000
+  glitchedTextures:
+  - {fileID: 21300000, guid: 80551709e1115f74e8dc0dc0f30052cf, type: 3}
+  - {fileID: 21300000, guid: 04df1783a142306449c5865d4d1075c3, type: 3}
+  - {fileID: 21300000, guid: 9bf4f468283cc8741870e61f6419762e, type: 3}
+  - {fileID: 21300000, guid: 80551709e1115f74e8dc0dc0f30052cf, type: 3}
+  - {fileID: 21300000, guid: 80551709e1115f74e8dc0dc0f30052cf, type: 3}
 --- !u!1 &307057032
 GameObject:
   m_ObjectHideFlags: 0
