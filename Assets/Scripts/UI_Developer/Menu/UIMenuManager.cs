@@ -18,21 +18,10 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField]
     private float speedTransparence;
 
-    private float alphaImage=1;
-    private Color color;
-    bool dissapear = false;
     
-    private void Start()
-    {
-        color = GetComponent<Color>();
-    }
     private void Update()
     {
         StartCoroutine(HideDevScreen());
-
-        //alphaImage = alphaImage - speedTransparence;
-       // devScreen.color = new Color(devScreen.color.r, devScreen.color.g, devScreen.color.b, alphaImage); ;
-
     }
 
     IEnumerator HideDevScreen()
