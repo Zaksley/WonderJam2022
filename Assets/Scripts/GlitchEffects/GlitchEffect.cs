@@ -8,6 +8,7 @@ public class GlitchEffect : MonoBehaviour
     public bool doGlitch = false;
     public bool doColor = false;
     bool glitchRunning = false;
+    bool isGlitching = false;
     [Space]
     [SerializeField] List<Options> options_;
     [Space]
@@ -40,6 +41,9 @@ public class GlitchEffect : MonoBehaviour
         {
             Sprite texture = render.sprite;
             DoEffect(options_[Random.Range(0,options_.Count)]);
+
+            while (isGlitching) yield return new WaitForSeconds(.1f);
+
             yield return new WaitForSeconds(Random.Range(.5f, 1+ 5f/intensity));
         }
         glitchRunning = false;
@@ -89,6 +93,7 @@ public class GlitchEffect : MonoBehaviour
 
     IEnumerator Flicker(int maxAmount)
     {
+        isGlitching = true;
         //Debug.Log("GlitchFlicker");
         int amount = Random.Range(1, maxAmount + 1);
         Sprite texture = render.sprite;
@@ -108,6 +113,7 @@ public class GlitchEffect : MonoBehaviour
         }
         TextureSwitch(texture);
 
+        isGlitching = false;
         yield break;
     }
 
@@ -118,6 +124,7 @@ public class GlitchEffect : MonoBehaviour
 
     IEnumerator Shake(int maxAmount)
     {
+        isGlitching = true;
         //Debug.Log("GlitchShake");
         int amount = Random.Range(1, maxAmount + 2);
 
@@ -139,6 +146,7 @@ public class GlitchEffect : MonoBehaviour
         if(coll) coll.offset = collPos;
         transform.position = initialPos;
 
+        isGlitching = false;
         yield break;
     }
 
