@@ -47,4 +47,8 @@ public class UIMenuManager : MonoBehaviour
         _mainCanvas.SetActive(true);
         _creditCanavas.SetActive(false);
     }
+
+    public void Quit() {
+        Application.Quit();
+    }
 }
