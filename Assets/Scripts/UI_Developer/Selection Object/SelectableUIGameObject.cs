@@ -25,13 +25,16 @@ public class SelectableUIGameObject : MonoBehaviour
         _clickOnChildren = false;
         if (GameManager.State != GameManager.PlayerState.DEVELOPER)
         {
-          
             UnSelectGameObject();
             UnSelectButton();
             return;
         }
+        
         if (Input.GetMouseButtonDown(0) && _mouseIsExit)
         {
+            if (MouseOnUI.IsMouseOnUI)
+                return; 
+            
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
             if (rayHit.transform != null)
             {
@@ -44,9 +47,9 @@ public class SelectableUIGameObject : MonoBehaviour
                             if (rayHit.transform.gameObject == obj)
                             {
                                 _clickOnChildren = true;
-
                             }
                         }
+                        
                         Debug.Log(_clickOnChildren);
                         if (!_clickOnChildren)
                         {
@@ -60,17 +63,13 @@ public class SelectableUIGameObject : MonoBehaviour
                     UnSelectGameObject();
                     UnSelectButton();
                 }
-                
             }
             else
             {
                 UnSelectGameObject();
                 UnSelectButton();
             }
-
         }
-
-        
     }
 
     private void UnselectChildren()
@@ -79,7 +78,6 @@ public class SelectableUIGameObject : MonoBehaviour
         {
             GlobalVariable.listChildrenGameObject[indexUI].SetActive(false);
         }
-
     }
    
 

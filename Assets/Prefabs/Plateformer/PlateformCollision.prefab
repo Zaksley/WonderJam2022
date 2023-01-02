@@ -142,8 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSelect: {fileID: 2855799472527770270}
   ButtonToSelect: {fileID: 0}
-  _childrenUI:
-  - {fileID: 0}
+  _childrenUI: []
 --- !u!114 &5519553313401940435
 MonoBehaviour:
   m_ObjectHideFlags: 0
